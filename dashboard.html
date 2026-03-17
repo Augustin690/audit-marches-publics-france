@@ -195,6 +195,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg-deep);color:var(
         <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">Objet du march&eacute;</th>
         <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">Titulaire</th>
         <th class="font-mono text-xs uppercase tracking-wider text-right px-4 py-3" style="color:var(--text-muted)">&Eacute;co. estim&eacute;e</th>
+        <th class="font-mono text-xs uppercase tracking-wider text-center px-4 py-3" style="color:var(--text-muted)">Source</th>
       </tr></thead><tbody id="tableBody"></tbody></table>
     </div>
   </div>
@@ -314,6 +315,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg-deep);color:var(
             <th class="px-4 py-3 text-left font-mono text-xs" style="color:var(--neon-pink)">Objet</th>
             <th class="px-4 py-3 text-left font-mono text-xs" style="color:var(--neon-pink)">Titulaire</th>
             <th class="px-4 py-3 text-left font-mono text-xs" style="color:var(--neon-pink)">Date</th>
+            <th class="px-4 py-3 text-center font-mono text-xs" style="color:var(--neon-pink)">Source</th>
           </tr></thead>
           <tbody id="lyonScTableBody"></tbody>
         </table>
@@ -392,56 +394,56 @@ const DATA = {
     {n:"SYSCO FRANCE SAS",c:50,t:115132227,sc:0}
   ],
   top50: [
-    {o:"Assurance dommages aux biens et risques annexes",m:505092,s:100,t:"SMACL ASSURANCES SA",p:"Sans publicit\u00e9",eb:75764,eh:176782},
-    {o:"Contrats d\u2019assurances groupement de commandes",m:90998,s:100,t:"SMACL ASSURANCES SA",p:"Sans publicit\u00e9",eb:13650,eh:31849},
-    {o:"Assurance dommages aux biens commune (CCAS)",m:88052,s:100,t:"SMACL ASSURANCES SA",p:"Sans publicit\u00e9",eb:13208,eh:30818},
-    {o:"Acquisition modules logiciels, maintenance et abonnement",m:700000,s:95,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:105000,eh:245000},
-    {o:"Acquisition 6 autobus SAFRA Hycity 12 m",m:4524215,s:90,t:"UGAP",p:"N\u00e9goci\u00e9 sans concurrence",eb:678632,eh:1583475},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:2521158,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:378174,eh:882405},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:1917426,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:287614,eh:671099},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:960000,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:144000,eh:336000},
-    {o:"ZSCALER Souscription Extended Log Store",m:824370,s:90,t:"UGAP",p:"N\u00e9goci\u00e9 sans concurrence",eb:123656,eh:288530},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:620172,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:93026,eh:217060},
-    {o:"Progiciels gestion RH \u2014 maintenance \u00e9volutions",m:600000,s:90,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:90000,eh:210000},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:573216,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:85982,eh:200626},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:475650,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:71348,eh:166478},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:403098,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:60465,eh:141084},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:289090,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:43364,eh:101182},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:272392,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:40859,eh:95337},
-    {o:"GIMA OFFICE SUITE & GIMA DIGITAL SUITE",m:220000,s:90,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:33000,eh:77000},
-    {o:"SCALEWAY prestation cloud",m:213291,s:90,t:"UGAP",p:"N\u00e9goci\u00e9 sans concurrence",eb:31994,eh:74652},
-    {o:"V\u00e9hicules de service urbains \u00e9cologiques",m:99500,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:14925,eh:34825},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:92697,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:13905,eh:32444},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:85269,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:12790,eh:29844},
-    {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:5267186,s:85,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:790078,eh:1843515},
-    {o:"Assurance flotte v\u00e9hicules et risques annexes",m:4726910,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:709036,eh:1654418},
-    {o:"Ma\u00eetrise d\u2019\u0153uvre ensemble immobilier",m:2681137,s:85,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:402171,eh:938398},
-    {o:"Assurance RC et risques annexes",m:2386872,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:358031,eh:835405},
-    {o:"Assurance dommages aux biens",m:2075290,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:311293,eh:726351},
-    {o:"Dommages aux biens et risques annexes (lot 2)",m:1631162,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:244674,eh:570907},
-    {o:"Dommages aux biens et risques annexes (lot 2, doublon)",m:1631162,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:244674,eh:570907},
-    {o:"Maintenance progiciels SOLIS / SOLATIS",m:1500000,s:85,t:"ARCHE MC2",p:"N\u00e9goci\u00e9 sans concurrence",eb:225000,eh:525000},
-    {o:"Assurance dommages Ville de Haguenau",m:1317416,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:197612,eh:461096},
-    {o:"Assurance IARD dommages aux biens",m:1089251,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:163388,eh:381238},
-    {o:"Assurance dommages aux biens (lot 1)",m:833736,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:125060,eh:291808},
-    {o:"Assurance dommages aux biens (lot 1, doublon)",m:833736,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:125060,eh:291808},
-    {o:"Assurance dommages aux biens Mondeville",m:727800,s:85,t:"Non identifi\u00e9",p:"Appel d\u2019offres ouvert",eb:109170,eh:254730},
-    {o:"Maintenance \u00e9volutive (lot 1)",m:611500,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:91725,eh:214025},
-    {o:"Assurance dommages aux biens (lot 1)",m:467915,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:70187,eh:163770},
-    {o:"Dommages aux biens mobiliers et immobiliers",m:440261,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:66039,eh:154091},
-    {o:"Logiciel MUNICIPOL \u2014 police municipale",m:400000,s:85,t:"LOGITUD SOLUTIONS",p:"N\u00e9goci\u00e9 sans concurrence",eb:60000,eh:140000},
-    {o:"Licence ESRI (SIG)",m:350150,s:85,t:"ESRI FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:52522,eh:122552},
-    {o:"Extension assurance dommages aux biens",m:317023,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:47553,eh:110958},
-    {o:"Assurance dommages commune de L\u2019Union",m:296965,s:85,t:"Non identifi\u00e9",p:"Appel d\u2019offres ouvert",eb:44545,eh:103938},
-    {o:"Assurance dommages aux biens risques annexes",m:295222,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:44283,eh:103328},
-    {o:"Assurance dommages (doublon)",m:295222,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:44283,eh:103328},
-    {o:"Assurance Agence du Num\u00e9rique en Sant\u00e9",m:280000,s:85,t:"SMACL ASSURANCES SA",p:"Appel d\u2019offres ouvert",eb:42000,eh:98000},
-    {o:"Maintenance ASTRE GF GS",m:234220,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:35133,eh:81977},
-    {o:"Maintenance ASTRE GF GS (doublon)",m:234220,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:35133,eh:81977},
-    {o:"Maintenance Horus",m:210000,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:31500,eh:73500},
-    {o:"Licences SIG \u2014 d\u00e9ploiement et maintenance",m:201793,s:85,t:"ESRI FRANCE",p:"Sans publicit\u00e9",eb:30269,eh:70628},
-    {o:"Assurance dommages SYDOM du Jura",m:168579,s:85,t:"SMACL ASSURANCES SA",p:"Appel d\u2019offres ouvert",eb:25287,eh:59003},
-    {o:"Maintenance curative (lot 2)",m:157096,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:23564,eh:54984}
+    {id:"2024240100",o:"Assurance dommages aux biens et risques annexes",m:505092,s:100,t:"SMACL ASSURANCES SA",p:"Sans publicit\u00e9",eb:75764,eh:176782},
+    {id:"202407",o:"Contrats d\u2019assurances groupement de commandes",m:90998,s:100,t:"SMACL ASSURANCES SA",p:"Sans publicit\u00e9",eb:13650,eh:31849},
+    {id:"249895291",o:"Assurance dommages aux biens commune (CCAS)",m:88052,s:100,t:"SMACL ASSURANCES SA",p:"Sans publicit\u00e9",eb:13208,eh:30818},
+    {id:"2023MN027",o:"Acquisition modules logiciels, maintenance et abonnement",m:700000,s:95,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:105000,eh:245000},
+    {id:"202324502CA00",o:"Acquisition 6 autobus SAFRA Hycity 12 m",m:4524215,s:90,t:"UGAP",p:"N\u00e9goci\u00e9 sans concurrence",eb:678632,eh:1583475},
+    {id:"243237",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:2521158,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:378174,eh:882405},
+    {id:"243230",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:1917426,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:287614,eh:671099},
+    {id:"243236",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:960000,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:144000,eh:336000},
+    {id:"202323SC014200",o:"ZSCALER Souscription Extended Log Store",m:824370,s:90,t:"UGAP",p:"N\u00e9goci\u00e9 sans concurrence",eb:123656,eh:288530},
+    {id:"243231",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:620172,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:93026,eh:217060},
+    {id:"2023200700",o:"Progiciels gestion RH \u2014 maintenance \u00e9volutions",m:600000,s:90,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:90000,eh:210000},
+    {id:"243223",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:573216,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:85982,eh:200626},
+    {id:"243229",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:475650,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:71348,eh:166478},
+    {id:"243224",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:403098,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:60465,eh:141084},
+    {id:"243228",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:289090,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:43364,eh:101182},
+    {id:"243222",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:272392,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:40859,eh:95337},
+    {id:"2024000023SF0400",o:"GIMA OFFICE SUITE & GIMA DIGITAL SUITE",m:220000,s:90,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:33000,eh:77000},
+    {id:"2023SC0138000000",o:"SCALEWAY prestation cloud",m:213291,s:90,t:"UGAP",p:"N\u00e9goci\u00e9 sans concurrence",eb:31994,eh:74652},
+    {id:"23020200",o:"V\u00e9hicules de service urbains \u00e9cologiques",m:99500,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:14925,eh:34825},
+    {id:"243234",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:92697,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:13905,eh:32444},
+    {id:"243226",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:85269,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:12790,eh:29844},
+    {id:"243227",o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:5267186,s:85,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:790078,eh:1843515},
+    {id:"202305700",o:"Assurance flotte v\u00e9hicules et risques annexes",m:4726910,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:709036,eh:1654418},
+    {id:"24202306700",o:"Ma\u00eetrise d\u2019\u0153uvre ensemble immobilier",m:2681137,s:85,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:402171,eh:938398},
+    {id:"2023Z230614N0000",o:"Assurance RC et risques annexes",m:2386872,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:358031,eh:835405},
+    {id:"2023M11700",o:"Assurance dommages aux biens",m:2075290,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:311293,eh:726351},
+    {id:"2023Z230615N0001",o:"Dommages aux biens et risques annexes (lot 2)",m:1631162,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:244674,eh:570907},
+    {id:"2023Z230615N0000",o:"Dommages aux biens et risques annexes (lot 2, doublon)",m:1631162,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:244674,eh:570907},
+    {id:"2023000000032500",o:"Maintenance progiciels SOLIS / SOLATIS",m:1500000,s:85,t:"ARCHE MC2",p:"N\u00e9goci\u00e9 sans concurrence",eb:225000,eh:525000},
+    {id:"20232606700",o:"Assurance dommages Ville de Haguenau",m:1317416,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:197612,eh:461096},
+    {id:"20232700",o:"Assurance IARD dommages aux biens",m:1089251,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:163388,eh:381238},
+    {id:"2023A18100",o:"Assurance dommages aux biens (lot 1)",m:833736,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:125060,eh:291808},
+    {id:"2023A18101",o:"Assurance dommages aux biens (lot 1, doublon)",m:833736,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:125060,eh:291808},
+    {id:"24988247",o:"Assurance dommages aux biens Mondeville",m:727800,s:85,t:"Non identifi\u00e9",p:"Appel d\u2019offres ouvert",eb:109170,eh:254730},
+    {id:"2023M230173000",o:"Maintenance \u00e9volutive (lot 1)",m:611500,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:91725,eh:214025},
+    {id:"202323APOAJ19000",o:"Assurance dommages aux biens (lot 1)",m:467915,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:70187,eh:163770},
+    {id:"2023 02 S0100",o:"Dommages aux biens mobiliers et immobiliers",m:440261,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:66039,eh:154091},
+    {id:"202322N0864-0000",o:"Logiciel MUNICIPOL \u2014 police municipale",m:400000,s:85,t:"LOGITUD SOLUTIONS",p:"N\u00e9goci\u00e9 sans concurrence",eb:60000,eh:140000},
+    {id:"2024A60800",o:"Licence ESRI (SIG)",m:350150,s:85,t:"ESRI FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:52522,eh:122552},
+    {id:"202313300",o:"Extension assurance dommages aux biens",m:317023,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:47553,eh:110958},
+    {id:"249954941",o:"Assurance dommages commune de L\u2019Union",m:296965,s:85,t:"Non identifi\u00e9",p:"Appel d\u2019offres ouvert",eb:44545,eh:103938},
+    {id:"20231601",o:"Assurance dommages aux biens risques annexes",m:295222,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:44283,eh:103328},
+    {id:"20231600",o:"Assurance dommages (doublon)",m:295222,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:44283,eh:103328},
+    {id:"2410025681",o:"Assurance Agence du Num\u00e9rique en Sant\u00e9",m:280000,s:85,t:"SMACL ASSURANCES SA",p:"Appel d\u2019offres ouvert",eb:42000,eh:98000},
+    {id:"2023DI0601",o:"Maintenance ASTRE GF GS",m:234220,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:35133,eh:81977},
+    {id:"2023DI0600",o:"Maintenance ASTRE GF GS (doublon)",m:234220,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:35133,eh:81977},
+    {id:"20232023114100",o:"Maintenance Horus",m:210000,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:31500,eh:73500},
+    {id:"20232023F0005200",o:"Licences SIG \u2014 d\u00e9ploiement et maintenance",m:201793,s:85,t:"ESRI FRANCE",p:"Sans publicit\u00e9",eb:30269,eh:70628},
+    {id:"249962421",o:"Assurance dommages SYDOM du Jura",m:168579,s:85,t:"SMACL ASSURANCES SA",p:"Appel d\u2019offres ouvert",eb:25287,eh:59003},
+    {id:"2023M230173100",o:"Maintenance curative (lot 2)",m:157096,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:23564,eh:54984}
   ],
   ugap: [
     {prod:"PC portable Lenovo ThinkBook 14 (8Go/256Go)",ugap:412,market:330,src:"LDLC/Amazon"},
@@ -485,16 +487,16 @@ const DATA = {
     ],
     procedures: {"Proc\u00e9dure adapt\u00e9e":{c:278,t:101254008},"Appel d\u2019offres ouvert":{c:240,t:315892115},"N\u00e9goci\u00e9 sans concurrence":{c:83,t:17194840},"N\u00e9goci\u00e9 avec concurrence":{c:8,t:33997879},"Proc\u00e9dure avec n\u00e9gociation":{c:8,t:17885831},"Sans publicit\u00e9":{c:1,t:61796}},
     examples_sc: [
-      {o:"Location b\u00e2timents modulaires (sites Pompidou, Kennedy, etc.)",m:3408430,t:"COUGNAUD",d:"2023-07"},
-      {o:"Maintenance Chronogestor/Chronotime + licences",m:1600000,t:"NEXPUBLICA",d:"2023-11"},
-      {o:"Assurance multirisques du patrimoine",m:1223248,t:"AXA FRANCE IARD",d:"2023-12"},
-      {o:"D\u00e9ploiement modems 4G horodateurs",m:1106389,t:"FLOWBIRD",d:"2023-07"},
-      {o:"Places & abonnements Olympique Lyonnais (lot 1)",m:948000,t:"OLYMPIQUE LYONNAIS",d:"2023-06"},
-      {o:"Droits stationnement parcs SPLM",m:800000,t:"SPLM",d:"2023-12"},
-      {o:"Droits stationnement parcs Lyon Parc Auto",m:800000,t:"LYON PARC AUTO",d:"2023-04"},
-      {o:"Sensibilisation sciences \u00e9coles primaires",m:720000,t:"EBULLISCIENCE",d:"2023-10"},
-      {o:"Places & abonnements OL (lot 2)",m:667000,t:"SPORTFIVE EMEA",d:"2023-06"},
-      {o:"S\u00e9curisation et gardiennage site CIRC",m:367981,t:"SERIS SECURITY",d:"2023-05"}
+      {id:"2023O499900",o:"Location b\u00e2timents modulaires (sites Pompidou, Kennedy, etc.)",m:3408430,t:"COUGNAUD",d:"2023-07"},
+      {id:"2023O4973A00",o:"Maintenance Chronogestor/Chronotime + licences",m:1600000,t:"NEXPUBLICA",d:"2023-11"},
+      {id:"2023O526200",o:"Assurance multirisques du patrimoine",m:1223248,t:"AXA FRANCE IARD",d:"2023-12"},
+      {id:"2023O479800",o:"D\u00e9ploiement modems 4G horodateurs",m:1106389,t:"FLOWBIRD",d:"2023-07"},
+      {id:"2023O4713A00",o:"Places & abonnements Olympique Lyonnais (lot 1)",m:948000,t:"OLYMPIQUE LYONNAIS",d:"2023-06"},
+      {id:"2023O5179A00",o:"Droits stationnement parcs SPLM",m:800000,t:"SPLM",d:"2023-12"},
+      {id:"2023O4631A00",o:"Droits stationnement parcs Lyon Parc Auto",m:800000,t:"LYON PARC AUTO",d:"2023-04"},
+      {id:"2023O5046A00",o:"Sensibilisation sciences \u00e9coles primaires",m:720000,t:"EBULLISCIENCE",d:"2023-10"},
+      {id:"2023O4714A00",o:"Places & abonnements OL (lot 2)",m:667000,t:"SPORTFIVE EMEA",d:"2023-06"},
+      {id:"2023O496400",o:"S\u00e9curisation et gardiennage site CIRC",m:367981,t:"SERIS SECURITY",d:"2023-05"}
     ]
   }
 };
@@ -502,6 +504,8 @@ const DATA = {
 const fmt=n=>new Intl.NumberFormat('fr-FR',{maximumFractionDigits:0}).format(n);
 const fmtK=n=>n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(0)+'k':fmt(n);
 function scoreBadge(s){const cls=s>=90?'score-critical':s>=70?'score-high':s>=60?'score-medium':'score-low';return'<span class="score-badge '+cls+'">'+s+'</span>';}
+function decpLink(id){return'https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/decp-v3-marches-valides/records?where=id%3D%22'+encodeURIComponent(id)+'%22&limit=1';}
+function decpBadge(id){return'<a href="'+decpLink(id)+'" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:4px;font-size:0.6rem;font-family:JetBrains Mono,monospace;background:rgba(0,255,136,0.08);color:var(--neon-green);border:1px solid rgba(0,255,136,0.2);text-decoration:none;white-space:nowrap" title="Voir la fiche DECP officielle">DECP\u2197</a>';}
 const THEME={bg:'transparent',textColor:'#94a3b8',fontFamily:'Space Grotesk, sans-serif',axisLine:{lineStyle:{color:'#1e293b'}},splitLine:{lineStyle:{color:'#1e293b',type:'dashed'}}};
 function baseOpt(){return{backgroundColor:THEME.bg,textStyle:{fontFamily:THEME.fontFamily,color:THEME.textColor},grid:{left:'3%',right:'3%',bottom:'3%',top:'8%',containLabel:true},tooltip:{backgroundColor:'#1a2236',borderColor:'#334155',textStyle:{color:'#e2e8f0',fontFamily:'Space Grotesk'}}};}
 
@@ -538,7 +542,7 @@ function renderSupplierChart(){
 
 function renderTable(){
   const tbody=document.getElementById('tableBody');let html='';
-  DATA.top50.forEach((r,i)=>{html+='<tr class="table-row" style="border-bottom:1px solid var(--border);cursor:default;"><td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+(i+1)+'</td><td class="px-4 py-3">'+scoreBadge(r.s)+'</td><td class="px-4 py-3 text-right font-mono text-sm font-semibold" style="color:var(--text-primary)">'+fmt(r.m)+' \u20ac</td><td class="px-4 py-3 text-sm" style="color:var(--text-primary);max-width:320px"><span class="line-clamp-2">'+r.o+'</span></td><td class="px-4 py-3 text-xs" style="color:var(--text-muted)">'+r.t+'<br/><span class="font-mono" style="color:var(--neon-pink);font-size:0.65rem">'+r.p+'</span></td><td class="px-4 py-3 text-right font-mono text-xs" style="color:var(--neon-green)">'+fmtK(r.eb)+' \u2013 '+fmtK(r.eh)+' \u20ac</td></tr>';});
+  DATA.top50.forEach((r,i)=>{html+='<tr class="table-row" style="border-bottom:1px solid var(--border);cursor:default;"><td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+(i+1)+'</td><td class="px-4 py-3">'+scoreBadge(r.s)+'</td><td class="px-4 py-3 text-right font-mono text-sm font-semibold" style="color:var(--text-primary)">'+fmt(r.m)+' \u20ac</td><td class="px-4 py-3 text-sm" style="color:var(--text-primary);max-width:320px"><span class="line-clamp-2">'+r.o+'</span></td><td class="px-4 py-3 text-xs" style="color:var(--text-muted)">'+r.t+'<br/><span class="font-mono" style="color:var(--neon-pink);font-size:0.65rem">'+r.p+'</span></td><td class="px-4 py-3 text-right font-mono text-xs" style="color:var(--neon-green)">'+fmtK(r.eb)+' \u2013 '+fmtK(r.eh)+' \u20ac</td><td class="px-4 py-3 text-center">'+(r.id?decpBadge(r.id):'')+'</td></tr>';});
   tbody.innerHTML=html;
 }
 
@@ -580,7 +584,7 @@ function renderLyonProcChart(){
 
 function renderLyonScTable(){
   const tbody=document.getElementById('lyonScTableBody');let html='';
-  DATA.lyon.examples_sc.forEach((r,i)=>{html+='<tr class="table-row" style="border-bottom:1px solid var(--border)"><td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+(i+1)+'</td><td class="px-4 py-3 text-right font-mono text-sm font-semibold" style="color:var(--neon-red)">'+fmt(r.m)+' \u20ac</td><td class="px-4 py-3 text-sm" style="color:var(--text-primary);max-width:300px"><span class="line-clamp-2">'+r.o+'</span></td><td class="px-4 py-3 text-xs" style="color:var(--text-muted)">'+r.t+'</td><td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+r.d+'</td></tr>';});
+  DATA.lyon.examples_sc.forEach((r,i)=>{html+='<tr class="table-row" style="border-bottom:1px solid var(--border)"><td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+(i+1)+'</td><td class="px-4 py-3 text-right font-mono text-sm font-semibold" style="color:var(--neon-red)">'+fmt(r.m)+' \u20ac</td><td class="px-4 py-3 text-sm" style="color:var(--text-primary);max-width:300px"><span class="line-clamp-2">'+r.o+'</span></td><td class="px-4 py-3 text-xs" style="color:var(--text-muted)">'+r.t+'</td><td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+r.d+'</td><td class="px-4 py-3 text-center">'+(r.id?decpBadge(r.id):'')+'</td></tr>';});
   tbody.innerHTML=html;
 }
 
