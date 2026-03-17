@@ -8,103 +8,65 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg-deep: #0a0e1a;
-  --bg-card: #111827;
-  --bg-card-hover: #1a2236;
-  --neon-green: #00ff88;
-  --neon-pink: #ff3b8b;
-  --neon-blue: #3b82f6;
-  --neon-amber: #f59e0b;
-  --neon-red: #ef4444;
-  --text-primary: #e2e8f0;
-  --text-muted: #94a3b8;
-  --border: #1e293b;
-  --glow-green: 0 0 20px rgba(0,255,136,0.15);
-  --glow-pink: 0 0 20px rgba(255,59,139,0.15);
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: 'Space Grotesk', sans-serif;
-  background: var(--bg-deep);
-  color: var(--text-primary);
-  overflow-x: hidden;
-}
-.font-mono { font-family: 'JetBrains Mono', monospace; }
-.bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-}
-.glow-border {
-  border: 1px solid rgba(0,255,136,0.15);
-  box-shadow: var(--glow-green);
-}
-.glow-border-pink {
-  border: 1px solid rgba(255,59,139,0.15);
-  box-shadow: var(--glow-pink);
-}
-.stat-card {
-  background: linear-gradient(145deg, var(--bg-card) 0%, rgba(17,24,39,0.7) 100%);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-.stat-card:hover {
-  border-color: rgba(0,255,136,0.3);
-  box-shadow: var(--glow-green);
-  transform: translateY(-2px);
-}
-.progress-bar {
-  position: fixed; top:0; left:0; height:3px; z-index:9999;
-  background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
-  transform-origin: left; will-change: transform;
-}
-.hero-gradient {
-  background: radial-gradient(ellipse at 30% 20%, rgba(0,255,136,0.06) 0%, transparent 60%),
-              radial-gradient(ellipse at 70% 80%, rgba(255,59,139,0.04) 0%, transparent 60%),
-              var(--bg-deep);
-}
-.section-enter { opacity:0; transform:translateY(40px); }
-.table-row:hover { background: var(--bg-card-hover); }
-.score-badge {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 42px; padding: 2px 8px; border-radius: 6px;
-  font-weight: 700; font-size: 0.8rem;
-}
-.score-critical { background: rgba(239,68,68,0.2); color: #fca5a5; border:1px solid rgba(239,68,68,0.3); }
-.score-high { background: rgba(245,158,11,0.2); color: #fcd34d; border:1px solid rgba(245,158,11,0.3); }
-.score-medium { background: rgba(59,130,246,0.2); color: #93c5fd; border:1px solid rgba(59,130,246,0.3); }
-.score-low { background: rgba(100,116,139,0.15); color: #94a3b8; border:1px solid rgba(100,116,139,0.2); }
-.mesh-bg {
-  background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-@keyframes pulse-glow {
-  0%,100% { opacity:0.6; } 50% { opacity:1; }
-}
-.pulse-dot {
-  width:8px; height:8px; border-radius:50%; background:var(--neon-green);
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-::-webkit-scrollbar { width:6px; }
-::-webkit-scrollbar-track { background:var(--bg-deep); }
-::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
-::-webkit-scrollbar-thumb:hover { background:#334155; }
+:root{--bg-deep:#0a0e1a;--bg-card:#111827;--bg-card-hover:#1a2236;--neon-green:#00ff88;--neon-pink:#ff3b8b;--neon-blue:#3b82f6;--neon-amber:#f59e0b;--neon-red:#ef4444;--text-primary:#e2e8f0;--text-muted:#94a3b8;--border:#1e293b;--glow-green:0 0 20px rgba(0,255,136,0.15);--sidebar-w:210px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg-deep);color:var(--text-primary);overflow-x:hidden}
+.font-mono{font-family:'JetBrains Mono',monospace}
+.bg-noise{background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E")}
+.stat-card{background:linear-gradient(145deg,var(--bg-card) 0%,rgba(17,24,39,0.7) 100%);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:all .3s ease}
+.stat-card:hover{border-color:rgba(0,255,136,0.3);box-shadow:var(--glow-green);transform:translateY(-2px)}
+.progress-bar{position:fixed;top:0;left:0;height:3px;z-index:9999;background:linear-gradient(90deg,var(--neon-green),var(--neon-blue));transform-origin:left;will-change:transform}
+.hero-gradient{background:radial-gradient(ellipse at 30% 20%,rgba(0,255,136,0.06) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(255,59,139,0.04) 0%,transparent 60%),var(--bg-deep)}
+.section-enter{opacity:0;transform:translateY(40px)}
+.table-row:hover{background:var(--bg-card-hover)}
+.score-badge{display:inline-flex;align-items:center;justify-content:center;min-width:42px;padding:2px 8px;border-radius:6px;font-weight:700;font-size:.8rem}
+.score-critical{background:rgba(239,68,68,0.2);color:#fca5a5;border:1px solid rgba(239,68,68,0.3)}
+.score-high{background:rgba(245,158,11,0.2);color:#fcd34d;border:1px solid rgba(245,158,11,0.3)}
+.score-medium{background:rgba(59,130,246,0.2);color:#93c5fd;border:1px solid rgba(59,130,246,0.3)}
+.score-low{background:rgba(100,116,139,0.15);color:#94a3b8;border:1px solid rgba(100,116,139,0.2)}
+.mesh-bg{background-image:linear-gradient(rgba(0,255,136,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,0.03) 1px,transparent 1px);background-size:60px 60px}
+@keyframes pulse-glow{0%,100%{opacity:.6}50%{opacity:1}}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--neon-green);animation:pulse-glow 2s ease-in-out infinite}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg-deep)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:linear-gradient(180deg,#0d1320 0%,#0a0e1a 100%);border-right:1px solid var(--border);z-index:1000;padding:1.5rem 0;display:flex;flex-direction:column;transition:transform .3s ease}
+.sidebar-link{display:flex;align-items:center;gap:8px;padding:9px 18px;color:var(--text-muted);text-decoration:none;font-size:.72rem;font-family:'JetBrains Mono',monospace;transition:all .2s;border-left:3px solid transparent}
+.sidebar-link:hover,.sidebar-link.active{color:var(--neon-green);background:rgba(0,255,136,0.05);border-left-color:var(--neon-green)}
+.main-content{margin-left:var(--sidebar-w)}
+.chart-caption{font-size:.78rem;color:var(--text-muted);margin-top:8px;line-height:1.5;font-style:italic}
+.raw-data-table{font-family:'JetBrains Mono',monospace;font-size:.63rem;width:100%;border-collapse:collapse}
+.raw-data-table th{background:rgba(0,255,136,0.08);color:var(--neon-green);padding:6px 8px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+.raw-data-table td{padding:5px 8px;border-bottom:1px solid rgba(30,41,59,0.5);color:var(--text-muted);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.raw-data-table tr:hover td{background:var(--bg-card-hover)}
+@media(max-width:1024px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.main-content{margin-left:0}.mobile-toggle{display:flex!important}}
 </style>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
-
-<!-- ==================== HERO ==================== -->
-<section class="hero-gradient mesh-bg min-h-screen flex flex-col justify-center items-center relative px-4" id="hero">
-  <div class="absolute top-6 left-6 flex items-center gap-2">
-    <div class="pulse-dot"></div>
-    <span class="font-mono text-xs tracking-widest uppercase" style="color:var(--neon-green)">Analyse en cours</span>
+<button class="mobile-toggle" style="display:none;position:fixed;top:12px;left:12px;z-index:1001;background:var(--bg-card);border:1px solid var(--border);color:var(--neon-green);padding:8px 12px;border-radius:8px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.75rem" onclick="document.querySelector('.sidebar').classList.toggle('open')">MENU</button>
+<nav class="sidebar" id="sidebar">
+  <div style="padding:0 18px 16px;border-bottom:1px solid var(--border);margin-bottom:10px">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><div class="pulse-dot"></div><span class="font-mono" style="color:var(--neon-green);font-size:.68rem;letter-spacing:.15em">AUDIT IA</span></div>
+    <p style="font-size:.62rem;color:var(--text-muted);line-height:1.4">Marches Publics FR<br>Mars 2026</p>
   </div>
+  <a href="#hero" class="sidebar-link active" data-section="hero">01 Accueil</a>
+  <a href="#contextSection" class="sidebar-link" data-section="contextSection">02 Contexte</a>
+  <a href="#statsSection" class="sidebar-link" data-section="statsSection">03 Chiffres cles</a>
+  <a href="#chartsSection" class="sidebar-link" data-section="chartsSection">04 Graphiques</a>
+  <a href="#suppliersSection" class="sidebar-link" data-section="suppliersSection">05 Fournisseurs</a>
+  <a href="#tableSection" class="sidebar-link" data-section="tableSection">06 Top 50</a>
+  <a href="#rawDataSection" class="sidebar-link" data-section="rawDataSection">07 Donnees brutes</a>
+  <a href="#ugapSection" class="sidebar-link" data-section="ugapSection">08 Prix UGAP</a>
+  <a href="#lyonSection" class="sidebar-link" data-section="lyonSection">10 Focus : Lyon</a>
+  <a href="#methSection" class="sidebar-link" data-section="methSection">11 Methodologie</a>
+  <div style="flex:1"></div>
+  <div style="padding:12px 18px;border-top:1px solid var(--border)"><p style="font-size:.58rem;color:var(--text-muted)">Sources: DECP, BOAMP<br>API Sirene, UGAP</p></div>
+</nav>
+<div class="main-content">
+
+<!-- HERO -->
+<section class="hero-gradient mesh-bg min-h-screen flex flex-col justify-center items-center relative px-4" id="hero">
   <div class="text-center max-w-5xl section-enter" id="heroContent">
     <p class="font-mono text-sm tracking-[0.3em] uppercase mb-6" style="color:var(--neon-green)">Audit algorithmique &mdash; Mars 2026</p>
     <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8 tracking-tight">
@@ -112,8 +74,7 @@ body {
       <span class="text-3xl md:text-4xl lg:text-5xl font-light" style="color:var(--text-muted)">d&rsquo;anomalies dans les march&eacute;s publics fran&ccedil;ais</span>
     </h1>
     <p class="text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style="color:var(--text-muted)">
-      Une IA a analys&eacute; 10&nbsp;000 contrats publics issus des donn&eacute;es ouvertes (DECP&nbsp;&&nbsp;BOAMP).
-      Voici ce qu&rsquo;elle a trouv&eacute; en quelques minutes.
+      Une IA a analys&eacute; 10&nbsp;000 contrats publics issus des donn&eacute;es ouvertes (DECP&nbsp;&&nbsp;BOAMP). Voici ce qu&rsquo;elle a trouv&eacute;.
     </p>
     <div class="flex flex-wrap justify-center gap-3 font-mono text-xs" style="color:var(--text-muted)">
       <span class="px-3 py-1 rounded-full" style="border:1px solid var(--border)">data.economie.gouv.fr</span>
@@ -127,161 +88,309 @@ body {
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--text-muted)"><path d="M10 4v12m0 0l-4-4m4 4l4-4"/></svg>
   </div>
 </section>
-<!-- ==================== STAT CARDS ==================== -->
-<section class="bg-noise py-20 px-4 md:px-8" id="statsSection">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex items-center gap-3 mb-10 section-enter">
-      <div style="width:40px;height:2px;background:var(--neon-green)"></div>
-      <h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-green)">Chiffres cl&eacute;s</h2>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-      <div class="stat-card section-enter">
-        <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">March&eacute;s analys&eacute;s</p>
-        <p class="text-3xl font-bold" style="color:var(--neon-green)">10&nbsp;000</p>
-        <p class="text-xs mt-1" style="color:var(--text-muted)">8,4 Mds &euro; au total</p>
-      </div>
-      <div class="stat-card section-enter">
-        <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">Opportunit&eacute;s (score&ge;70)</p>
-        <p class="text-3xl font-bold" style="color:var(--neon-amber)">761</p>
-        <p class="text-xs mt-1" style="color:var(--text-muted)">346 M &euro;</p>
-      </div>
-      <div class="stat-card section-enter">
-        <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">&Eacute;conomie estim&eacute;e</p>
-        <p class="text-3xl font-bold" style="color:var(--neon-pink)">52&ndash;121M</p>
-        <p class="text-xs mt-1" style="color:var(--text-muted)">EUR potentiels</p>
-      </div>
-      <div class="stat-card section-enter">
-        <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">Sans concurrence</p>
-        <p class="text-3xl font-bold" style="color:var(--neon-red)">458</p>
-        <p class="text-xs mt-1" style="color:var(--text-muted)">494 M &euro; (5,9%)</p>
-      </div>
-      <div class="stat-card section-enter">
-        <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">Fournisseur unique</p>
-        <p class="text-3xl font-bold" style="color:var(--neon-blue)">269</p>
-        <p class="text-xs mt-1" style="color:var(--text-muted)">229 M &euro;</p>
-      </div>
-      <div class="stat-card section-enter">
-        <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">Donn&eacute;es manquantes</p>
-        <p class="text-3xl font-bold" style="color:var(--text-muted)">89,8%</p>
-        <p class="text-xs mt-1" style="color:var(--text-muted)">sans info concurrence</p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ==================== CHARTS ==================== -->
-<section class="bg-noise py-20 px-4 md:px-8" id="chartsSection">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex items-center gap-3 mb-10 section-enter">
-      <div style="width:40px;height:2px;background:var(--neon-green)"></div>
-      <h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-green)">Analyse visuelle</h2>
-    </div>
 
-    <!-- Row 1: Score Distribution + Procedures -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-      <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
-        <h3 class="font-mono text-sm mb-4 tracking-wider" style="color:var(--text-muted)">Distribution des scores de suspicion</h3>
-        <div id="chartScore" style="width:100%;height:340px;"></div>
-      </div>
-      <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
-        <h3 class="font-mono text-sm mb-4 tracking-wider" style="color:var(--text-muted)">R&eacute;partition par type de proc&eacute;dure</h3>
-        <div id="chartProcedures" style="width:100%;height:340px;"></div>
-      </div>
-    </div>
-
-    <!-- Row 2: Top Categories -->
-    <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
-      <h3 class="font-mono text-sm mb-4 tracking-wider" style="color:var(--text-muted)">Top 15 cat&eacute;gories par montant total (code CPV)</h3>
-      <div id="chartCategories" style="width:100%;height:420px;"></div>
-    </div>
-  </div>
-</section>
-<!-- ==================== TOP 50 TABLE ==================== -->
-<section class="bg-noise py-20 px-4 md:px-8" id="tableSection">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex items-center gap-3 mb-4 section-enter">
-      <div style="width:40px;height:2px;background:var(--neon-pink)"></div>
-      <h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-pink)">Top 50 opportunit&eacute;s de sous-ench&egrave;re</h2>
-    </div>
-    <p class="text-sm mb-8 section-enter" style="color:var(--text-muted)">March&eacute;s class&eacute;s par score de suspicion d&eacute;croissant. Plus le score est &eacute;lev&eacute;, plus le march&eacute; pr&eacute;sente de signaux d&rsquo;anomalie.</p>
-    <div class="section-enter overflow-x-auto" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;">
-      <table class="w-full text-sm" style="min-width:900px;">
-        <thead>
-          <tr style="border-bottom:1px solid var(--border);">
-            <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">#</th>
-            <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">Score</th>
-            <th class="font-mono text-xs uppercase tracking-wider text-right px-4 py-3" style="color:var(--text-muted)">Montant</th>
-            <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">Objet du march&eacute;</th>
-            <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">Titulaire</th>
-            <th class="font-mono text-xs uppercase tracking-wider text-right px-4 py-3" style="color:var(--text-muted)">&Eacute;co. estim&eacute;e</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
-    </div>
-  </div>
-</section>
-<!-- ==================== METHODOLOGY ==================== -->
-<section class="bg-noise py-20 px-4 md:px-8" id="methSection">
+<!-- CONTEXT -->
+<section class="bg-noise py-20 px-4 md:px-8" id="contextSection">
   <div class="max-w-4xl mx-auto">
-    <div class="flex items-center gap-3 mb-10 section-enter">
-      <div style="width:40px;height:2px;background:var(--neon-blue)"></div>
-      <h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-blue)">M&eacute;thodologie</h2>
-    </div>
-    <div class="section-enter space-y-8" style="color:var(--text-muted);line-height:1.8;">
-      <div>
-        <h3 class="text-lg font-semibold mb-3" style="color:var(--text-primary)">Sources de donn&eacute;es</h3>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li><strong style="color:var(--text-primary)">DECP</strong> &mdash; Donn&eacute;es Essentielles de la Commande Publique via <span class="font-mono text-xs">data.economie.gouv.fr</span> (702&nbsp;918 march&eacute;s disponibles, 10&nbsp;000 analys&eacute;s)</li>
-          <li><strong style="color:var(--text-primary)">BOAMP</strong> &mdash; Bulletin Officiel des Annonces de March&eacute;s Publics (1,6M avis, 3&nbsp;000 analys&eacute;s)</li>
-          <li><strong style="color:var(--text-primary)">API Sirene</strong> &mdash; Annuaire des Entreprises pour l&rsquo;enrichissement des profils fournisseurs</li>
-          <li><strong style="color:var(--text-primary)">UGAP / LDLC</strong> &mdash; Prix commerciaux de r&eacute;f&eacute;rence pour les fournitures</li>
-        </ul>
+    <div class="flex items-center gap-3 mb-8 section-enter"><div style="width:40px;height:2px;background:var(--neon-blue)"></div><h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-blue)">Ce que nous avons fait</h2></div>
+    <div class="section-enter space-y-6" style="color:var(--text-muted);line-height:1.9;font-size:.95rem">
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+        <h3 class="text-lg font-semibold mb-3" style="color:var(--text-primary)">La d&eacute;marche</h3>
+        <p>Inspir&eacute;s par <strong style="color:var(--text-primary)">@Argona0x</strong> qui a analys&eacute; les contrats du Pentagone am&eacute;ricain, nous avons appliqu&eacute; la m&ecirc;me approche aux <strong style="color:var(--text-primary)">march&eacute;s publics fran&ccedil;ais</strong>. En utilisant uniquement des donn&eacute;es ouvertes et de l&rsquo;IA :</p>
+        <ol class="list-decimal pl-5 mt-3 space-y-2 text-sm">
+          <li><strong style="color:var(--neon-green)">Collect&eacute;</strong> 10 000 march&eacute;s r&eacute;cents (2023-2025) depuis la plateforme DECP + 3 000 avis BOAMP</li>
+          <li><strong style="color:var(--neon-green)">Class&eacute;</strong> 2 293 march&eacute;s de fournitures comparables &agrave; des prix commerciaux (COTS)</li>
+          <li><strong style="color:var(--neon-green)">Compar&eacute;</strong> les montants avec les prix r&eacute;els (UGAP, LDLC, catalogues constructeurs)</li>
+          <li><strong style="color:var(--neon-green)">Enrichi</strong> les profils de 70 fournisseurs cl&eacute;s via l&rsquo;API Sirene</li>
+          <li><strong style="color:var(--neon-green)">Scor&eacute;</strong> chaque march&eacute; sur 100 selon sa &laquo;&nbsp;facilit&eacute; de sous-ench&egrave;re&nbsp;&raquo;</li>
+        </ol>
       </div>
-      <div>
-        <h3 class="text-lg font-semibold mb-3" style="color:var(--text-primary)">Syst&egrave;me de scoring (0&ndash;100)</h3>
-        <div class="font-mono text-xs space-y-2" style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1rem;">
-          <p>Base = 50 points</p>
-          <p style="color:var(--neon-red)">+15 pts &rarr; March&eacute; pass&eacute; sans publicit&eacute; ni mise en concurrence</p>
-          <p style="color:var(--neon-red)">+15 pts &rarr; Une seule offre re&ccedil;ue (fournisseur unique)</p>
-          <p style="color:var(--neon-amber)">+10 pts &rarr; Fournisseur ayant 3+ march&eacute;s sans concurrence (captivit&eacute;)</p>
-          <p style="color:var(--neon-amber)">+ 5 pts &rarr; Fournisseur pr&eacute;sent sur 10+ march&eacute;s (concentration)</p>
-          <p style="color:var(--neon-blue)">+ 5 pts &rarr; Cat&eacute;gorie COTS (comparable aux prix commerciaux)</p>
-          <p style="color:var(--neon-blue)">+ 5 pts &rarr; Montant dans la fourchette 50k&ndash;5M &euro; (accessible)</p>
-          <p style="color:var(--neon-green)">- 10 pts &rarr; 5+ offres re&ccedil;ues (concurrence saine)</p>
-          <p style="color:var(--text-muted)">-  5 pts &rarr; Montant &gt; 20M &euro; (complexit&eacute;)</p>
-          <p style="color:var(--text-muted)">- 10 pts &rarr; Montant &lt; 50k &euro; (peu int&eacute;ressant)</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div style="background:var(--bg-card);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:1.5rem">
+          <h3 class="text-base font-semibold mb-3" style="color:var(--neon-red)">Limites importantes</h3>
+          <ul class="list-disc pl-4 space-y-2 text-sm">
+            <li><strong style="color:var(--text-primary)">Echantillon partiel</strong> : 10 000 sur 702 918 march&eacute;s (1,4%)</li>
+            <li><strong style="color:var(--text-primary)">89,8% sans donn&eacute;es de concurrence</strong></li>
+            <li><strong style="color:var(--text-primary)">Pas de prix unitaires</strong> : montants globaux uniquement</li>
+            <li><strong style="color:var(--text-primary)">Justifications l&eacute;gales</strong> : certains &laquo;&nbsp;sans concurrence&nbsp;&raquo; sont l&eacute;gitimes</li>
+            <li><strong style="color:var(--text-primary)">Prix UGAP possiblement gonfl&eacute;s</strong></li>
+          </ul>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid rgba(0,255,136,0.2);border-radius:12px;padding:1.5rem">
+          <h3 class="text-base font-semibold mb-3" style="color:var(--neon-green)">Prochaines &eacute;tapes</h3>
+          <ul class="list-disc pl-4 space-y-2 text-sm">
+            <li>&Eacute;tendre aux <strong style="color:var(--text-primary)">702 918 march&eacute;s</strong></li>
+            <li>Int&eacute;grer la <strong style="color:var(--text-primary)">sous-traitance</strong></li>
+            <li>Comparer avec <strong style="color:var(--text-primary)">Amazon Business / Cdiscount Pro</strong></li>
+            <li><strong style="color:var(--text-primary)">Monitoring temps r&eacute;el</strong> des nouveaux march&eacute;s</li>
+            <li>Analyser les <strong style="color:var(--text-primary)">r&eacute;seaux fournisseurs</strong></li>
+          </ul>
         </div>
       </div>
-      <div>
-        <h3 class="text-lg font-semibold mb-3" style="color:var(--text-primary)">Estimation des &eacute;conomies</h3>
-        <p class="text-sm">Pour les march&eacute;s &agrave; score &ge;70 : estimation conservatrice de <strong style="color:var(--text-primary)">15&ndash;35%</strong> de r&eacute;duction possible. Pour les scores 50&ndash;69 : <strong style="color:var(--text-primary)">10&ndash;25%</strong>. Ces estimations ne tiennent pas compte des exigences r&eacute;glementaires sp&eacute;cifiques (certifications, origine, normes) qui peuvent justifier une partie des surco&ucirc;ts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAT CARDS -->
+<section class="bg-noise py-20 px-4 md:px-8" id="statsSection">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-10 section-enter"><div style="width:40px;height:2px;background:var(--neon-green)"></div><h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-green)">Chiffres cl&eacute;s</h2></div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div class="stat-card section-enter"><p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">March&eacute;s analys&eacute;s</p><p class="text-3xl font-bold" style="color:var(--neon-green)">10&nbsp;000</p><p class="text-xs mt-1" style="color:var(--text-muted)">8,4 Mds &euro; au total</p></div>
+      <div class="stat-card section-enter"><p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">Opportunit&eacute;s (score&ge;70)</p><p class="text-3xl font-bold" style="color:var(--neon-amber)">761</p><p class="text-xs mt-1" style="color:var(--text-muted)">346 M &euro;</p></div>
+      <div class="stat-card section-enter"><p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">&Eacute;conomie estim&eacute;e</p><p class="text-3xl font-bold" style="color:var(--neon-pink)">52&ndash;121M</p><p class="text-xs mt-1" style="color:var(--text-muted)">EUR potentiels</p></div>
+      <div class="stat-card section-enter"><p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">Sans concurrence</p><p class="text-3xl font-bold" style="color:var(--neon-red)">458</p><p class="text-xs mt-1" style="color:var(--text-muted)">494 M &euro; (5,9%)</p></div>
+      <div class="stat-card section-enter"><p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">Fournisseur unique</p><p class="text-3xl font-bold" style="color:var(--neon-blue)">269</p><p class="text-xs mt-1" style="color:var(--text-muted)">229 M &euro;</p></div>
+      <div class="stat-card section-enter"><p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:var(--text-muted)">Donn&eacute;es manquantes</p><p class="text-3xl font-bold" style="color:var(--text-muted)">89,8%</p><p class="text-xs mt-1" style="color:var(--text-muted)">sans info concurrence</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARTS -->
+<section class="bg-noise py-20 px-4 md:px-8" id="chartsSection">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-10 section-enter"><div style="width:40px;height:2px;background:var(--neon-green)"></div><h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-green)">Analyse visuelle</h2></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+        <h3 class="font-mono text-sm mb-1 tracking-wider" style="color:var(--text-muted)">Distribution des scores de suspicion</h3>
+        <div id="chartScore" style="width:100%;height:340px"></div>
+        <p class="chart-caption">Chaque march&eacute; re&ccedil;oit un score de 0 &agrave; 100. Plus le score est &eacute;lev&eacute;, plus le march&eacute; pr&eacute;sente de signaux d&rsquo;anomalie. La majorit&eacute; se situe autour de 50 (zone neutre). Les 761 march&eacute;s &agrave; 70+ sont nos cibles prioritaires.</p>
       </div>
-      <div>
-        <h3 class="text-lg font-semibold mb-3" style="color:var(--text-primary)">Limites</h3>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li>89,8% des march&eacute;s n&rsquo;indiquent pas le nombre d&rsquo;offres &rarr; le niveau de concurrence r&eacute;el est largement inconnu</li>
-          <li>Les montants DECP sont globaux (pas de d&eacute;tail par ligne) &rarr; impossible de calculer un prix unitaire pr&eacute;cis</li>
-          <li>Certains march&eacute;s &laquo;&nbsp;sans concurrence&nbsp;&raquo; sont l&eacute;galement justifi&eacute;s (droits exclusifs, urgence imp&eacute;rieuse)</li>
-          <li>&Eacute;chantillon de 10&nbsp;000 march&eacute;s sur 702&nbsp;918 disponibles (1,4%)</li>
-        </ul>
+      <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+        <h3 class="font-mono text-sm mb-1 tracking-wider" style="color:var(--text-muted)">R&eacute;partition par type de proc&eacute;dure</h3>
+        <div id="chartProcedures" style="width:100%;height:340px"></div>
+        <p class="chart-caption">La proc&eacute;dure adapt&eacute;e (51%) et l&rsquo;appel d&rsquo;offres ouvert (42%) couvrent 93% des march&eacute;s. Les 458 march&eacute;s &laquo;&nbsp;sans publicit&eacute;&nbsp;&raquo; ou &laquo;&nbsp;n&eacute;goci&eacute;s sans concurrence&nbsp;&raquo; totalisent 494 M EUR.</p>
+      </div>
+    </div>
+    <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+      <h3 class="font-mono text-sm mb-1 tracking-wider" style="color:var(--text-muted)">Top 15 cat&eacute;gories par montant total (code CPV)</h3>
+      <div id="chartCategories" style="width:100%;height:480px"></div>
+      <p class="chart-caption">Les travaux de construction dominent (3,2 Mds EUR). Les cat&eacute;gories de fournitures comparables (m&eacute;dical, informatique, v&eacute;hicules) offrent le plus grand potentiel de sous-ench&egrave;re car les prix commerciaux sont connus. Barres class&eacute;es du plus grand au plus petit montant.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TOP 10 SUPPLIERS -->
+<section class="bg-noise py-20 px-4 md:px-8" id="suppliersSection">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-4 section-enter"><div style="width:40px;height:2px;background:var(--neon-amber)"></div><h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-amber)">Top 10 fournisseurs par montant</h2></div>
+    <p class="text-sm mb-8 section-enter" style="color:var(--text-muted)">Les plus gros b&eacute;n&eacute;ficiaires de march&eacute;s publics dans notre &eacute;chantillon. Le nombre de march&eacute;s sans concurrence est mis en &eacute;vidence.</p>
+    <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+      <div id="chartSuppliers" style="width:100%;height:440px"></div>
+      <p class="chart-caption">Un montant &eacute;lev&eacute; ne signifie pas anomalie. Les entreprises BTP (Colas, Guintoli, Eurovia) remportent de gros lots de construction. Le signal d&rsquo;alerte est la combinaison montant &eacute;lev&eacute; + march&eacute;s sans concurrence (segments rouges).</p>
+    </div>
+  </div>
+</section>
+
+<!-- TOP 50 TABLE -->
+<section class="bg-noise py-20 px-4 md:px-8" id="tableSection">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-4 section-enter"><div style="width:40px;height:2px;background:var(--neon-pink)"></div><h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-pink)">Top 50 opportunit&eacute;s de sous-ench&egrave;re</h2></div>
+    <p class="text-sm mb-8 section-enter" style="color:var(--text-muted)">March&eacute;s class&eacute;s par score de suspicion d&eacute;croissant.</p>
+    <div class="section-enter overflow-x-auto" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px">
+      <table class="w-full text-sm" style="min-width:900px"><thead><tr style="border-bottom:1px solid var(--border)">
+        <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">#</th>
+        <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">Score</th>
+        <th class="font-mono text-xs uppercase tracking-wider text-right px-4 py-3" style="color:var(--text-muted)">Montant</th>
+        <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">Objet du march&eacute;</th>
+        <th class="font-mono text-xs uppercase tracking-wider text-left px-4 py-3" style="color:var(--text-muted)">Titulaire</th>
+        <th class="font-mono text-xs uppercase tracking-wider text-right px-4 py-3" style="color:var(--text-muted)">&Eacute;co. estim&eacute;e</th>
+      </tr></thead><tbody id="tableBody"></tbody></table>
+    </div>
+  </div>
+</section>
+
+<!-- RAW DATA -->
+<section class="bg-noise py-20 px-4 md:px-8" id="rawDataSection">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-4 section-enter"><div style="width:40px;height:2px;background:var(--neon-green)"></div><h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-green)">Donn&eacute;es brutes</h2></div>
+    <p class="text-sm mb-8 section-enter" style="color:var(--text-muted)">Extraits des sources ouvertes utilis&eacute;es. Ces donn&eacute;es sont publiques et accessibles &agrave; tous.</p>
+    <div class="section-enter mb-6" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+      <h3 class="font-mono text-sm mb-1" style="color:var(--neon-green)">DECP &mdash; Donn&eacute;es Essentielles de la Commande Publique</h3>
+      <p class="text-xs mb-3" style="color:var(--text-muted)">Source : data.economie.gouv.fr &mdash; 702 918 march&eacute;s disponibles, 10 000 t&eacute;l&eacute;charg&eacute;s</p>
+      <div class="overflow-x-auto"><table class="raw-data-table"><thead><tr><th>ID</th><th>Objet</th><th>Montant</th><th>CPV</th><th>Proc&eacute;dure</th><th>Date</th><th>Lieu</th></tr></thead><tbody>
+        <tr><td>20232023090400</td><td>TRAVAUX RENOVATION PETITES FORGES - LOT 4 MENUISERIE</td><td style="color:var(--neon-green)">43 193 &euro;</td><td>45421000</td><td>Proc. adapt&eacute;e</td><td>2024-02-08</td><td>Auxonne</td></tr>
+        <tr><td>249884962</td><td>Formation r&eacute;glementaire SSLIA: Lot 2 E-Learning</td><td style="color:var(--neon-green)">32 000 &euro;</td><td>80530000</td><td>Proc. adapt&eacute;e</td><td>2024-01-11</td><td>&mdash;</td></tr>
+        <tr><td>202319B5R300</td><td>TRAVAUX ER - GRPT SGER2/ELECTRA ZONE B5</td><td style="color:var(--neon-green)">150 450 &euro;</td><td>09310000</td><td>AO ouvert</td><td>2023-12-31</td><td>R&eacute;union</td></tr>
+        <tr><td>20230033100</td><td>AM&Eacute;NAGEMENT MAISON M&Eacute;DICALE - D&Eacute;MOLITION</td><td style="color:var(--neon-green)">46 707 &euro;</td><td>45111100</td><td>Proc. adapt&eacute;e</td><td>2023-12-31</td><td>Vaucresson</td></tr>
+        <tr><td>2023000000008500</td><td>NETTOYAGE LOCAUX COMMUNAUX - PARC OLYMPIQUE LOT 4</td><td style="color:var(--neon-green)">600 000 &euro;</td><td>90911200</td><td>AO ouvert</td><td>2023-12-31</td><td>Les Allues</td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+      <h3 class="font-mono text-sm mb-1" style="color:var(--neon-green)">BOAMP &mdash; Bulletin Officiel des Annonces de March&eacute;s Publics</h3>
+      <p class="text-xs mb-3" style="color:var(--text-muted)">Source : boamp-datadila.opendatasoft.com &mdash; 1 646 131 avis, 3 000 t&eacute;l&eacute;charg&eacute;s (724 attributions)</p>
+      <div class="overflow-x-auto"><table class="raw-data-table"><thead><tr><th>ID</th><th>Objet</th><th>Type</th><th>Proc&eacute;dure</th><th>Acheteur</th><th>Titulaire</th><th>D&eacute;pt</th></tr></thead><tbody>
+        <tr><td>26_26122</td><td>Fourniture banc de charge r&eacute;sistif - Base Navale</td><td>FOURNITURES</td><td>N&eacute;goci&eacute;e</td><td>DICOM FAZSOI</td><td>SVMOI</td><td>974</td></tr>
+        <tr><td>26_26181</td><td>CALCULATRICES SCIENTIFIQUES COLL&Eacute;GIENS BdR</td><td>FOURNITURES</td><td>Ouverte</td><td>D&Eacute;PT BOUCHES-DU-RH&Ocirc;NE</td><td>CALCUSO</td><td>13</td></tr>
+        <tr><td>26_26089</td><td>Localisation ouvrages et r&eacute;seaux enterr&eacute;s</td><td>SERVICES</td><td>Ouverte</td><td>D&eacute;pt Dordogne</td><td>DETECT RESEAUX GIRONDE</td><td>24</td></tr>
+        <tr><td>26_26460</td><td>Balisage s&eacute;curit&eacute; tunnels routiers M&eacute;tropole AMP</td><td>SERVICES</td><td>Ouverte</td><td>M&eacute;tropole Aix-Marseille</td><td>MONACHINO S.</td><td>13</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<!-- UGAP PRICE FLAGS -->
+<section class="bg-noise py-20 px-4 md:px-8" id="ugapSection">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-4 section-enter"><div style="width:40px;height:2px;background:var(--neon-amber)"></div><h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-amber)">Analyse prix UGAP vs march&eacute; grand public</h2></div>
+    <p class="text-sm mb-4 section-enter" style="color:var(--text-muted)">L&rsquo;UGAP (centrale d&rsquo;achat publique) sert de r&eacute;f&eacute;rence pour les administrations. Mais ses prix sont-ils comp&eacute;titifs ? Comparaison avec les prix consommateurs (Amazon, LDLC, Cdiscount, catalogues constructeurs).</p>
+    <div class="section-enter mb-6" style="background:var(--bg-card);border:1px solid rgba(245,158,11,0.2);border-radius:12px;padding:1.5rem">
+      <h3 class="text-base font-semibold mb-4" style="color:var(--neon-amber)">Comparaison produit par produit</h3>
+      <div class="overflow-x-auto"><table class="w-full text-sm" style="border-collapse:collapse"><thead><tr style="border-bottom:1px solid var(--border)">
+        <th class="font-mono text-xs text-left px-3 py-2" style="color:var(--text-muted)">Produit</th>
+        <th class="font-mono text-xs text-right px-3 py-2" style="color:var(--text-muted)">UGAP TTC</th>
+        <th class="font-mono text-xs text-right px-3 py-2" style="color:var(--text-muted)">March&eacute; TTC</th>
+        <th class="font-mono text-xs text-right px-3 py-2" style="color:var(--text-muted)">&Eacute;cart</th>
+        <th class="font-mono text-xs text-left px-3 py-2" style="color:var(--text-muted)">Verdict</th>
+      </tr></thead><tbody id="ugapTableBody"></tbody></table></div>
+      <p class="chart-caption mt-4">Les prix UGAP incluent des services (livraison, garantie &eacute;tendue, support, conformit&eacute; RGPD). Mais certains &eacute;carts d&eacute;passent largement ce qui est justifiable. Les administrations utilisant l&rsquo;UGAP pour &laquo;&nbsp;simplifier&nbsp;&raquo; pourraient &eacute;conomiser significativement par appel d&rsquo;offres direct.</p>
+    </div>
+    <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+      <h3 class="text-base font-semibold mb-3" style="color:var(--text-primary)">Verdict par cat&eacute;gorie</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+        <div style="background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.15);border-radius:8px;padding:1rem">
+          <p class="font-mono text-xs mb-1" style="color:var(--neon-green)">CORRECT</p>
+          <p class="text-sm" style="color:var(--text-muted)"><strong style="color:var(--text-primary)">Mobilier</strong> : prix UGAP proches ou inf&eacute;rieurs au march&eacute; pour bureaux et chaises standard.</p>
+        </div>
+        <div style="background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.15);border-radius:8px;padding:1rem">
+          <p class="font-mono text-xs mb-1" style="color:var(--neon-amber)">ATTENTION</p>
+          <p class="text-sm" style="color:var(--text-muted)"><strong style="color:var(--text-primary)">Informatique</strong> : PC portables UGAP 15-40% plus chers. Diff&eacute;rence partiellement justifiable par le support.</p>
+        </div>
+        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:8px;padding:1rem">
+          <p class="font-mono text-xs mb-1" style="color:var(--neon-red)">SUSPECT</p>
+          <p class="text-sm" style="color:var(--text-muted)"><strong style="color:var(--text-primary)">V&eacute;hicules via UGAP</strong> : 6 bus SAFRA &agrave; 754k&euro;/unit&eacute; sans concurrence, prix constructeur 400-600k&euro;.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== FOOTER ==================== -->
-<footer class="py-12 px-4 text-center" style="border-top:1px solid var(--border);">
-  <p class="font-mono text-xs" style="color:var(--text-muted)">
-    Audit IA des March&eacute;s Publics Fran&ccedil;ais &mdash; Mars 2026<br>
-    G&eacute;n&eacute;r&eacute; automatiquement &agrave; partir des donn&eacute;es ouvertes de l&rsquo;&Eacute;tat fran&ccedil;ais.
-  </p>
+<!-- FOCUS LYON -->
+<section class="bg-noise py-20 px-4 md:px-8" id="lyonSection">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-3 mb-4 section-enter"><div style="width:40px;height:2px;background:var(--neon-pink)"></div><h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-pink)">Focus : Ville de Lyon</h2></div>
+    <p class="text-sm mb-10 max-w-3xl section-enter" style="color:var(--text-muted);line-height:1.8">
+      Pour illustrer concr&egrave;tement la d&eacute;marche, nous avons isol&eacute; les march&eacute;s publics ex&eacute;cut&eacute;s &agrave; Lyon ou pass&eacute;s par des acheteurs lyonnais. Ce zoom local permet aux citoyens de mieux comprendre comment sont d&eacute;pens&eacute;s les fonds publics dans leur ville. Les donn&eacute;es proviennent exclusivement du jeu de donn&eacute;es ouvert DECP, filtr&eacute; sur <code class="font-mono text-xs px-1 py-0.5 rounded" style="background:rgba(0,255,136,0.08);color:var(--neon-green)">lieuexecution_nom = &quot;Lyon&quot;</code> et <code class="font-mono text-xs px-1 py-0.5 rounded" style="background:rgba(0,255,136,0.08);color:var(--neon-green)">acheteur_nom like &quot;%lyon%&quot;</code>.
+    </p>
+
+    <!-- Lyon stats cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 section-enter">
+      <div class="stat-card"><p class="font-mono text-xs mb-1" style="color:var(--text-muted)">March&eacute;s analys&eacute;s</p><p class="text-2xl font-bold" style="color:var(--neon-pink)">618</p></div>
+      <div class="stat-card"><p class="font-mono text-xs mb-1" style="color:var(--text-muted)">Montant total</p><p class="text-2xl font-bold" style="color:var(--text-primary)">486 M&euro;</p></div>
+      <div class="stat-card"><p class="font-mono text-xs mb-1" style="color:var(--text-muted)">Sans concurrence</p><p class="text-2xl font-bold" style="color:var(--neon-red)">84</p><p class="font-mono text-xs" style="color:var(--text-muted)">17,3 M&euro; &mdash; 13,6%</p></div>
+      <div class="stat-card"><p class="font-mono text-xs mb-1" style="color:var(--text-muted)">Acheteur principal</p><p class="text-sm font-semibold" style="color:var(--text-primary)">ESID Lyon (D&eacute;fense)</p><p class="font-mono text-xs" style="color:var(--text-muted)">64 march&eacute;s &mdash; 54 M&euro;</p></div>
+    </div>
+
+    <!-- Lyon charts row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <div class="section-enter">
+        <h3 class="text-base font-semibold mb-2" style="color:var(--text-primary)">Top 10 fournisseurs lyonnais</h3>
+        <p class="chart-caption mb-3">Montant cumul&eacute; des march&eacute;s par fournisseur. BYBLOS HUMAN SECURITY domine avec 31 M&euro; sur 3 march&eacute;s de s&eacute;curit&eacute;.</p>
+        <div id="chartLyonSuppliers" style="width:100%;height:380px"></div>
+      </div>
+      <div class="section-enter">
+        <h3 class="text-base font-semibold mb-2" style="color:var(--text-primary)">Cat&eacute;gories de d&eacute;penses</h3>
+        <p class="chart-caption mb-3">Les travaux de construction repr&eacute;sentent 37% du montant total (180 M&euro;), suivis des services aux entreprises et de l&rsquo;ing&eacute;nierie.</p>
+        <div id="chartLyonCategories" style="width:100%;height:380px"></div>
+      </div>
+    </div>
+
+    <!-- Lyon procedures pie -->
+    <div class="max-w-xl mx-auto mb-12 section-enter">
+      <h3 class="text-base font-semibold mb-2" style="color:var(--text-primary)">R&eacute;partition par proc&eacute;dure</h3>
+      <p class="chart-caption mb-3">45% des march&eacute;s lyonnais passent en proc&eacute;dure adapt&eacute;e, 39% en appel d&rsquo;offres ouvert. 13,6% sont n&eacute;goci&eacute;s sans mise en concurrence.</p>
+      <div id="chartLyonProc" style="width:100%;height:340px"></div>
+    </div>
+
+    <!-- Lyon sans concurrence table -->
+    <div class="section-enter mb-8">
+      <h3 class="text-base font-semibold mb-2" style="color:var(--text-primary)">March&eacute;s sans concurrence &mdash; les plus gros montants</h3>
+      <p class="chart-caption mb-4">Ces 10 march&eacute;s ont &eacute;t&eacute; attribu&eacute;s sans publicit&eacute; ni mise en concurrence. L&rsquo;absence de concurrence ne signifie pas n&eacute;cessairement une anomalie (ex : droits exclusifs, urgence), mais justifie un examen attentif.</p>
+      <div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px">
+        <table class="w-full" style="border-collapse:collapse">
+          <thead><tr style="background:rgba(255,59,139,0.08)">
+            <th class="px-4 py-3 text-left font-mono text-xs" style="color:var(--neon-pink)">#</th>
+            <th class="px-4 py-3 text-right font-mono text-xs" style="color:var(--neon-pink)">Montant</th>
+            <th class="px-4 py-3 text-left font-mono text-xs" style="color:var(--neon-pink)">Objet</th>
+            <th class="px-4 py-3 text-left font-mono text-xs" style="color:var(--neon-pink)">Titulaire</th>
+            <th class="px-4 py-3 text-left font-mono text-xs" style="color:var(--neon-pink)">Date</th>
+          </tr></thead>
+          <tbody id="lyonScTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Lyon narrative -->
+    <div class="section-enter" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+      <h3 class="text-base font-semibold mb-3" style="color:var(--text-primary)">Ce que cela signifie pour les Lyonnais</h3>
+      <div class="text-sm space-y-3" style="color:var(--text-muted);line-height:1.8">
+        <p>Sur 618 march&eacute;s analys&eacute;s &agrave; Lyon (486 M&euro;), <strong style="color:var(--neon-red)">84 ont &eacute;t&eacute; attribu&eacute;s sans aucune mise en concurrence</strong>, repr&eacute;sentant 17,3 M&euro;. Les raisons peuvent &ecirc;tre l&eacute;gitimes (fournisseur exclusif, urgence technique), mais le volume m&eacute;rite un examen syst&eacute;matique.</p>
+        <p>Deux constats notables : (1) des march&eacute;s de <strong style="color:var(--text-primary)">stationnement et mobilit&eacute;</strong> attribu&eacute;s sans concurrence &agrave; la SPLM et Lyon Parc Auto &mdash; ce sont des d&eacute;l&eacute;gataires historiques, mais la question de la remise en concurrence se pose ; (2) un march&eacute; de <strong style="color:var(--text-primary)">948 000 &euro; avec l&rsquo;Olympique Lyonnais</strong> pour des places et abonnements, n&eacute;goci&eacute; sans concurrence.</p>
+        <p>Le secteur de la <strong style="color:var(--text-primary)">construction</strong> concentre 37% des montants, ce qui est coh&eacute;rent pour une m&eacute;tropole en d&eacute;veloppement. Le second poste (services aux entreprises, 63 M&euro;) inclut des prestations intellectuelles o&ugrave; la mise en concurrence est souvent plus facile &agrave; organiser.</p>
+        <p style="font-style:italic;color:var(--neon-green)">Cette analyse est un point de d&eacute;part, pas un verdict. L&rsquo;objectif est de donner aux citoyens les outils pour poser les bonnes questions &agrave; leurs &eacute;lus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="bg-noise py-20 px-4 md:px-8" id="methSection">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center gap-3 mb-10 section-enter"><div style="width:40px;height:2px;background:var(--neon-blue)"></div><h2 class="font-mono text-sm tracking-[0.2em] uppercase" style="color:var(--neon-blue)">M&eacute;thodologie</h2></div>
+    <div class="section-enter space-y-8" style="color:var(--text-muted);line-height:1.8">
+      <div><h3 class="text-lg font-semibold mb-3" style="color:var(--text-primary)">Sources de donn&eacute;es</h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li><strong style="color:var(--text-primary)">DECP</strong> &mdash; data.economie.gouv.fr (702 918 march&eacute;s, 10 000 analys&eacute;s)</li>
+          <li><strong style="color:var(--text-primary)">BOAMP</strong> &mdash; 1,6M avis, 3 000 analys&eacute;s</li>
+          <li><strong style="color:var(--text-primary)">API Sirene</strong> &mdash; enrichissement fournisseurs</li>
+          <li><strong style="color:var(--text-primary)">UGAP / LDLC</strong> &mdash; prix de r&eacute;f&eacute;rence</li>
+        </ul>
+      </div>
+      <div><h3 class="text-lg font-semibold mb-3" style="color:var(--text-primary)">Syst&egrave;me de scoring (0&ndash;100)</h3>
+        <div class="font-mono text-xs space-y-2" style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1rem">
+          <p>Base = 50 points</p>
+          <p style="color:var(--neon-red)">+15 pts &rarr; Sans publicit&eacute; ni concurrence</p>
+          <p style="color:var(--neon-red)">+15 pts &rarr; Fournisseur unique (1 offre)</p>
+          <p style="color:var(--neon-amber)">+10 pts &rarr; Fournisseur captif (3+ sans concurrence)</p>
+          <p style="color:var(--neon-amber)">+ 5 pts &rarr; Concentration (10+ march&eacute;s)</p>
+          <p style="color:var(--neon-blue)">+ 5 pts &rarr; Cat&eacute;gorie COTS</p>
+          <p style="color:var(--neon-blue)">+ 5 pts &rarr; Montant 50k&ndash;5M &euro;</p>
+          <p style="color:var(--neon-green)">-10 pts &rarr; 5+ offres (concurrence saine)</p>
+          <p style="color:var(--text-muted)">- 5 pts &rarr; Montant &gt; 20M &euro;</p>
+          <p style="color:var(--text-muted)">-10 pts &rarr; Montant &lt; 50k &euro;</p>
+        </div>
+      </div>
+      <div><h3 class="text-lg font-semibold mb-3" style="color:var(--text-primary)">Estimation des &eacute;conomies</h3>
+        <p class="text-sm">Score &ge;70 : <strong style="color:var(--text-primary)">15&ndash;35%</strong> de r&eacute;duction estim&eacute;e. Ces estimations ne tiennent pas compte des exigences r&eacute;glementaires (certifications, normes) pouvant justifier une partie des surco&ucirc;ts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-12 px-4 text-center" style="border-top:1px solid var(--border)">
+  <p class="font-mono text-xs" style="color:var(--text-muted)">Audit IA des March&eacute;s Publics Fran&ccedil;ais &mdash; Mars 2026<br>G&eacute;n&eacute;r&eacute; &agrave; partir des donn&eacute;es ouvertes de l&rsquo;&Eacute;tat fran&ccedil;ais.</p>
 </footer>
+
+</div><!-- end main-content -->
+
 <script>
-// ========== EMBEDDED DATA ==========
+// ========== DATA ==========
 const DATA = {
   score_distribution: {"30":92,"40":1431,"50":5938,"60":1778,"70":649,"80":91,"90":18,"100":3},
   categories: {"45":{"n":"Travaux de construction","c":3214,"t":3187152122},"33":{"n":"Mat\u00e9riel m\u00e9dical","c":387,"t":678066175},"90":{"n":"Assainissement & environnement","c":614,"t":575870174},"32":{"n":"T\u00e9l\u00e9communications","c":87,"t":458792301},"66":{"n":"Assurance & finance","c":851,"t":441186692},"15":{"n":"Alimentaire & boissons","c":452,"t":361188784},"31":{"n":"Mat\u00e9riel \u00e9lectrique","c":88,"t":286144926},"34":{"n":"Transport & v\u00e9hicules","c":324,"t":254443678},"71":{"n":"Architecture & ing\u00e9nierie","c":752,"t":221854988},"60":{"n":"Services de transport","c":179,"t":215313682},"09":{"n":"P\u00e9trole & \u00e9nergie","c":194,"t":194983921},"79":{"n":"Services aux entreprises","c":374,"t":175654783},"65":{"n":"Distribution d\u2019eau","c":29,"t":161836645},"30":{"n":"Informatique & bureautique","c":185,"t":159919172},"55":{"n":"H\u00f4tellerie & restauration","c":122,"t":130981890}},
   procedures: {"Proc\u00e9dure adapt\u00e9e":{"c":5122,"t":1359019919},"Appel d\u2019offres ouvert":{"c":4190,"t":6078842420},"March\u00e9 n\u00e9goci\u00e9 sans concurrence":{"c":361,"t":250331407},"Appel d\u2019offres restreint":{"c":27,"t":164246202},"Proc\u00e9dure avec n\u00e9gociation":{"c":46,"t":113297268},"March\u00e9 pass\u00e9 sans publicit\u00e9":{"c":97,"t":244231893},"Proc\u00e9dure concurrentielle":{"c":63,"t":84485382},"Proc\u00e9dure n\u00e9goci\u00e9e avec concurrence":{"c":85,"t":63633518},"Dialogue comp\u00e9titif":{"c":9,"t":49017312}},
+  suppliers: [
+    {n:"PIGEON TP LOIRE ANJOU",c:3,t:258615353,sc:0},
+    {n:"COLAS FRANCE",c:2,t:258229429,sc:0},
+    {n:"GUINTOLI",c:3,t:258186991,sc:0},
+    {n:"EUROVIA ATLANTIQUE",c:2,t:258099000,sc:0},
+    {n:"TOTALENERGIES ELEC. & GAZ",c:20,t:183863853,sc:0},
+    {n:"ERYMA SAS",c:2,t:150000000,sc:0},
+    {n:"GREINER BIO ONE SAS",c:3,t:134856000,sc:0},
+    {n:"TRANSDEV NIORT AGGLO.",c:1,t:133889875,sc:0},
+    {n:"IVECO FRANCE",c:1,t:120000000,sc:1},
+    {n:"SYSCO FRANCE SAS",c:50,t:115132227,sc:0}
+  ],
   top50: [
     {o:"Assurance dommages aux biens et risques annexes",m:505092,s:100,t:"SMACL ASSURANCES SA",p:"Sans publicit\u00e9",eb:75764,eh:176782},
     {o:"Contrats d\u2019assurances groupement de commandes",m:90998,s:100,t:"SMACL ASSURANCES SA",p:"Sans publicit\u00e9",eb:13650,eh:31849},
@@ -299,20 +408,20 @@ const DATA = {
     {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:403098,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:60465,eh:141084},
     {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:289090,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:43364,eh:101182},
     {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:272392,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:40859,eh:95337},
-    {o:"GIMA OFFICE SUITE & GIMA DIGITAL SUITE \u2014 acquisition maintenance",m:220000,s:90,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:33000,eh:77000},
-    {o:"SCALEWAY prestation \u00e0 l\u2019usage (cloud)",m:213291,s:90,t:"UGAP",p:"N\u00e9goci\u00e9 sans concurrence",eb:31994,eh:74652},
+    {o:"GIMA OFFICE SUITE & GIMA DIGITAL SUITE",m:220000,s:90,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:33000,eh:77000},
+    {o:"SCALEWAY prestation cloud",m:213291,s:90,t:"UGAP",p:"N\u00e9goci\u00e9 sans concurrence",eb:31994,eh:74652},
     {o:"V\u00e9hicules de service urbains \u00e9cologiques",m:99500,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:14925,eh:34825},
     {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:92697,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:13905,eh:32444},
     {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:85269,s:90,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:12790,eh:29844},
     {o:"Sp\u00e9cialit\u00e9s pharmaceutiques GCS GRAPS Grand Est",m:5267186,s:85,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:790078,eh:1843515},
-    {o:"Assurance flotte v\u00e9hicules et risques annexes \u2014 relance",m:4726910,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:709036,eh:1654418},
+    {o:"Assurance flotte v\u00e9hicules et risques annexes",m:4726910,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:709036,eh:1654418},
     {o:"Ma\u00eetrise d\u2019\u0153uvre ensemble immobilier",m:2681137,s:85,t:"Non identifi\u00e9",p:"Sans publicit\u00e9",eb:402171,eh:938398},
     {o:"Assurance RC et risques annexes",m:2386872,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:358031,eh:835405},
-    {o:"Assurance dommages aux biens et risques annexes",m:2075290,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:311293,eh:726351},
+    {o:"Assurance dommages aux biens",m:2075290,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:311293,eh:726351},
     {o:"Dommages aux biens et risques annexes (lot 2)",m:1631162,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:244674,eh:570907},
     {o:"Dommages aux biens et risques annexes (lot 2, doublon)",m:1631162,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:244674,eh:570907},
     {o:"Maintenance progiciels SOLIS / SOLATIS",m:1500000,s:85,t:"ARCHE MC2",p:"N\u00e9goci\u00e9 sans concurrence",eb:225000,eh:525000},
-    {o:"Assurance dommages Ville de Haguenau (lot 1)",m:1317416,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:197612,eh:461096},
+    {o:"Assurance dommages Ville de Haguenau",m:1317416,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:197612,eh:461096},
     {o:"Assurance IARD dommages aux biens",m:1089251,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:163388,eh:381238},
     {o:"Assurance dommages aux biens (lot 1)",m:833736,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:125060,eh:291808},
     {o:"Assurance dommages aux biens (lot 1, doublon)",m:833736,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:125060,eh:291808},
@@ -321,126 +430,177 @@ const DATA = {
     {o:"Assurance dommages aux biens (lot 1)",m:467915,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:70187,eh:163770},
     {o:"Dommages aux biens mobiliers et immobiliers",m:440261,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:66039,eh:154091},
     {o:"Logiciel MUNICIPOL \u2014 police municipale",m:400000,s:85,t:"LOGITUD SOLUTIONS",p:"N\u00e9goci\u00e9 sans concurrence",eb:60000,eh:140000},
-    {o:"Licence ESRI (SIG) \u2014 concession droits d\u2019utilisation",m:350150,s:85,t:"ESRI FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:52522,eh:122552},
+    {o:"Licence ESRI (SIG)",m:350150,s:85,t:"ESRI FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:52522,eh:122552},
     {o:"Extension assurance dommages aux biens",m:317023,s:85,t:"Non identifi\u00e9",p:"N\u00e9goci\u00e9 sans concurrence",eb:47553,eh:110958},
-    {o:"Assurance dommages commune de L\u2019Union (lot 1)",m:296965,s:85,t:"Non identifi\u00e9",p:"Appel d\u2019offres ouvert",eb:44545,eh:103938},
+    {o:"Assurance dommages commune de L\u2019Union",m:296965,s:85,t:"Non identifi\u00e9",p:"Appel d\u2019offres ouvert",eb:44545,eh:103938},
     {o:"Assurance dommages aux biens risques annexes",m:295222,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:44283,eh:103328},
-    {o:"Assurance dommages aux biens risques annexes (doublon)",m:295222,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:44283,eh:103328},
-    {o:"Assurance Agence du Num\u00e9rique en Sant\u00e9 (lot 1)",m:280000,s:85,t:"SMACL ASSURANCES SA",p:"Appel d\u2019offres ouvert",eb:42000,eh:98000},
+    {o:"Assurance dommages (doublon)",m:295222,s:85,t:"SMACL ASSURANCES SA",p:"N\u00e9goci\u00e9 sans concurrence",eb:44283,eh:103328},
+    {o:"Assurance Agence du Num\u00e9rique en Sant\u00e9",m:280000,s:85,t:"SMACL ASSURANCES SA",p:"Appel d\u2019offres ouvert",eb:42000,eh:98000},
     {o:"Maintenance ASTRE GF GS",m:234220,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:35133,eh:81977},
     {o:"Maintenance ASTRE GF GS (doublon)",m:234220,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:35133,eh:81977},
     {o:"Maintenance Horus",m:210000,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:31500,eh:73500},
     {o:"Licences SIG \u2014 d\u00e9ploiement et maintenance",m:201793,s:85,t:"ESRI FRANCE",p:"Sans publicit\u00e9",eb:30269,eh:70628},
-    {o:"Assurance dommages SYDOM du Jura (lot 1)",m:168579,s:85,t:"SMACL ASSURANCES SA",p:"Appel d\u2019offres ouvert",eb:25287,eh:59003},
+    {o:"Assurance dommages SYDOM du Jura",m:168579,s:85,t:"SMACL ASSURANCES SA",p:"Appel d\u2019offres ouvert",eb:25287,eh:59003},
     {o:"Maintenance curative (lot 2)",m:157096,s:85,t:"NEXPUBLICA FRANCE",p:"N\u00e9goci\u00e9 sans concurrence",eb:23564,eh:54984}
-  ]
+  ],
+  ugap: [
+    {prod:"PC portable Lenovo ThinkBook 14 (8Go/256Go)",ugap:412,market:330,src:"LDLC/Amazon"},
+    {prod:"PC portable ThinkPad E14 (16Go/512Go)",ugap:687,market:520,src:"LDLC"},
+    {prod:"PC portable HP EliteBook 840 G11",ugap:1476,market:1100,src:"Amazon/LDLC"},
+    {prod:"PC portable ThinkPad P16 (workstation)",ugap:1976,market:1650,src:"Lenovo direct"},
+    {prod:"Ecran 24\" Full HD",ugap:180,market:120,src:"LDLC/Amazon"},
+    {prod:"Ecran 27\" QHD",ugap:420,market:280,src:"LDLC/Amazon"},
+    {prod:"Bureau informatique standard",ugap:210,market:180,src:"IKEA/Conforama"},
+    {prod:"Chaise de bureau ergonomique",ugap:288,market:250,src:"Amazon/BUT"},
+    {prod:"Armoire m\u00e9tallique 2 portes",ugap:670,market:450,src:"Manutan/Amazon"},
+    {prod:"Lampe de bureau LED",ugap:85,market:35,src:"IKEA/Amazon"},
+    {prod:"Cabine acoustique bureau",ugap:5630,market:3500,src:"Cdiscount"},
+    {prod:"Utilitaire Renault Kangoo Van",ugap:23500,market:22000,src:"Renault catalogue"},
+    {prod:"Bus SAFRA Hycity 12m (H2)",ugap:754000,market:500000,src:"Estimation constructeur"}
+  ],
+  lyon: {
+    suppliers: [
+      {n:"BYBLOS HUMAN SECURITY",c:3,t:31273412,sc:0},
+      {n:"SOLUTEC (AUBAY)",c:1,t:20000000,sc:0},
+      {n:"LES METIERS DU BOIS",c:8,t:13348194,sc:0},
+      {n:"SPIE ICS",c:1,t:12000000,sc:0},
+      {n:"WILLIS TOWERS WATSON",c:4,t:11520000,sc:0},
+      {n:"SAMNET",c:1,t:9000000,sc:0},
+      {n:"CREB B\u00e2timent",c:3,t:8755337,sc:0},
+      {n:"SPIE FACILITIES",c:5,t:8480000,sc:0},
+      {n:"NXO FRANCE",c:1,t:8000000,sc:0},
+      {n:"GREEN STYLE",c:1,t:8000000,sc:0}
+    ],
+    categories: [
+      {n:"Travaux de construction",t:179657332,c:198,sc:6},
+      {n:"Services aux entreprises",t:63429360,c:62,sc:9},
+      {n:"Architecture/ing\u00e9nierie",t:37262638,c:81,sc:2},
+      {n:"Mat\u00e9riaux de construction",t:36385823,c:37,sc:5},
+      {n:"Services informatiques",t:36050100,c:20,sc:3},
+      {n:"Produits alimentaires",t:20864607,c:8,sc:0},
+      {n:"R\u00e9paration/entretien",t:14909037,c:19,sc:0},
+      {n:"Services financiers",t:13898828,c:12,sc:1},
+      {n:"Appareils \u00e9lectriques",t:13876649,c:18,sc:2},
+      {n:"T\u00e9l\u00e9communications",t:8714118,c:5,sc:0}
+    ],
+    procedures: {"Proc\u00e9dure adapt\u00e9e":{c:278,t:101254008},"Appel d\u2019offres ouvert":{c:240,t:315892115},"N\u00e9goci\u00e9 sans concurrence":{c:83,t:17194840},"N\u00e9goci\u00e9 avec concurrence":{c:8,t:33997879},"Proc\u00e9dure avec n\u00e9gociation":{c:8,t:17885831},"Sans publicit\u00e9":{c:1,t:61796}},
+    examples_sc: [
+      {o:"Location b\u00e2timents modulaires (sites Pompidou, Kennedy, etc.)",m:3408430,t:"COUGNAUD",d:"2023-07"},
+      {o:"Maintenance Chronogestor/Chronotime + licences",m:1600000,t:"NEXPUBLICA",d:"2023-11"},
+      {o:"Assurance multirisques du patrimoine",m:1223248,t:"AXA FRANCE IARD",d:"2023-12"},
+      {o:"D\u00e9ploiement modems 4G horodateurs",m:1106389,t:"FLOWBIRD",d:"2023-07"},
+      {o:"Places & abonnements Olympique Lyonnais (lot 1)",m:948000,t:"OLYMPIQUE LYONNAIS",d:"2023-06"},
+      {o:"Droits stationnement parcs SPLM",m:800000,t:"SPLM",d:"2023-12"},
+      {o:"Droits stationnement parcs Lyon Parc Auto",m:800000,t:"LYON PARC AUTO",d:"2023-04"},
+      {o:"Sensibilisation sciences \u00e9coles primaires",m:720000,t:"EBULLISCIENCE",d:"2023-10"},
+      {o:"Places & abonnements OL (lot 2)",m:667000,t:"SPORTFIVE EMEA",d:"2023-06"},
+      {o:"S\u00e9curisation et gardiennage site CIRC",m:367981,t:"SERIS SECURITY",d:"2023-05"}
+    ]
+  }
 };
 
-// ========== HELPERS ==========
-const fmt = n => new Intl.NumberFormat('fr-FR',{maximumFractionDigits:0}).format(n);
-const fmtK = n => n>=1e6 ? (n/1e6).toFixed(1)+'M' : n>=1e3 ? (n/1e3).toFixed(0)+'k' : fmt(n);
-function scoreBadge(s){
-  const cls = s>=90?'score-critical':s>=70?'score-high':s>=60?'score-medium':'score-low';
-  return '<span class="score-badge '+cls+'">'+s+'</span>';
-}
+const fmt=n=>new Intl.NumberFormat('fr-FR',{maximumFractionDigits:0}).format(n);
+const fmtK=n=>n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(0)+'k':fmt(n);
+function scoreBadge(s){const cls=s>=90?'score-critical':s>=70?'score-high':s>=60?'score-medium':'score-low';return'<span class="score-badge '+cls+'">'+s+'</span>';}
+const THEME={bg:'transparent',textColor:'#94a3b8',fontFamily:'Space Grotesk, sans-serif',axisLine:{lineStyle:{color:'#1e293b'}},splitLine:{lineStyle:{color:'#1e293b',type:'dashed'}}};
+function baseOpt(){return{backgroundColor:THEME.bg,textStyle:{fontFamily:THEME.fontFamily,color:THEME.textColor},grid:{left:'3%',right:'3%',bottom:'3%',top:'8%',containLabel:true},tooltip:{backgroundColor:'#1a2236',borderColor:'#334155',textStyle:{color:'#e2e8f0',fontFamily:'Space Grotesk'}}};}
 
-// ========== ECHARTS THEME ==========
-const THEME = {
-  bg:'transparent',
-  textColor:'#94a3b8',
-  fontFamily:'Space Grotesk, sans-serif',
-  axisLine:{lineStyle:{color:'#1e293b'}},
-  splitLine:{lineStyle:{color:'#1e293b',type:'dashed'}},
-};
-function baseOpt(){ return {backgroundColor:THEME.bg, textStyle:{fontFamily:THEME.fontFamily,color:THEME.textColor}, grid:{left:'3%',right:'3%',bottom:'3%',top:'8%',containLabel:true}, tooltip:{backgroundColor:'#1a2236',borderColor:'#334155',textStyle:{color:'#e2e8f0',fontFamily:'Space Grotesk'}}}; }
-
-// ========== SCORE CHART ==========
 function renderScoreChart(){
-  const c = echarts.init(document.getElementById('chartScore'),null,{renderer:'svg'});
-  const keys = ['30','40','50','60','70','80','90','100'];
-  const vals = keys.map(k=>DATA.score_distribution[k]||0);
-  const colors = ['#334155','#475569','#64748b','#3b82f6','#f59e0b','#f97316','#ef4444','#dc2626'];
-  const opt = {...baseOpt(),
-    xAxis:{type:'category',data:keys.map(k=>k+'+'),axisLine:THEME.axisLine,axisTick:{show:false},axisLabel:{color:THEME.textColor,fontFamily:'JetBrains Mono',fontSize:11}},
-    yAxis:{type:'value',splitLine:THEME.splitLine,axisLabel:{color:THEME.textColor,formatter:v=>fmtK(v)}},
-    tooltip:{...baseOpt().tooltip,formatter:p=>'<b>Score '+p.name+'</b><br/>'+fmt(p.value)+' march\u00e9s'},
-    series:[{type:'bar',data:vals.map((v,i)=>({value:v,itemStyle:{color:colors[i],borderRadius:[4,4,0,0]}})),barWidth:'60%',animationDuration:1200,animationEasing:'cubicOut'}]
-  };
-  c.setOption(opt);
+  const c=echarts.init(document.getElementById('chartScore'),null,{renderer:'svg'});
+  const keys=['30','40','50','60','70','80','90','100'],vals=keys.map(k=>DATA.score_distribution[k]||0);
+  const colors=['#334155','#475569','#64748b','#3b82f6','#f59e0b','#f97316','#ef4444','#dc2626'];
+  c.setOption({...baseOpt(),xAxis:{type:'category',data:keys.map(k=>k+'+'),axisLine:THEME.axisLine,axisTick:{show:false},axisLabel:{color:THEME.textColor,fontFamily:'JetBrains Mono',fontSize:11}},yAxis:{type:'value',splitLine:THEME.splitLine,axisLabel:{color:THEME.textColor,formatter:v=>fmtK(v)}},tooltip:{...baseOpt().tooltip,formatter:p=>'<b>Score '+p.name+'</b><br/>'+fmt(p.value)+' march\u00e9s'},series:[{type:'bar',data:vals.map((v,i)=>({value:v,itemStyle:{color:colors[i],borderRadius:[4,4,0,0]}})),barWidth:'60%',animationDuration:1200}]});
   window.addEventListener('resize',()=>c.resize());
 }
 
-// ========== PROCEDURES CHART ==========
 function renderProcChart(){
-  const c = echarts.init(document.getElementById('chartProcedures'),null,{renderer:'svg'});
-  const entries = Object.entries(DATA.procedures).sort((a,b)=>b[1].t-a[1].t);
-  const colors = ['#3b82f6','#00ff88','#f59e0b','#8b5cf6','#ef4444','#ec4899','#06b6d4','#84cc16','#f97316'];
-  const opt = {...baseOpt(),
-    tooltip:{...baseOpt().tooltip,formatter:p=>'<b>'+p.name+'</b><br/>'+fmt(p.value)+' march\u00e9s<br/>'+fmtK(entries[p.dataIndex][1].t)+' \u20ac'},
-    series:[{type:'pie',radius:['42%','72%'],center:['50%','55%'],padAngle:2,itemStyle:{borderRadius:6},
-      label:{color:THEME.textColor,fontSize:10,fontFamily:'Space Grotesk',formatter:'{b|{b}}\n{per|{d}%}',rich:{b:{fontSize:10,color:'#cbd5e1',lineHeight:16},per:{fontSize:11,fontWeight:700,color:'#e2e8f0'}}},
-      data:entries.map((e,i)=>({name:e[0],value:e[1].c,itemStyle:{color:colors[i%colors.length]}})),
-      animationType:'scale',animationDuration:1000}]
-  };
-  c.setOption(opt);
+  const c=echarts.init(document.getElementById('chartProcedures'),null,{renderer:'svg'});
+  const entries=Object.entries(DATA.procedures).sort((a,b)=>b[1].t-a[1].t);
+  const colors=['#3b82f6','#00ff88','#f59e0b','#8b5cf6','#ef4444','#ec4899','#06b6d4','#84cc16','#f97316'];
+  c.setOption({...baseOpt(),tooltip:{...baseOpt().tooltip,formatter:p=>'<b>'+p.name+'</b><br/>'+fmt(p.value)+' march\u00e9s<br/>'+fmtK(entries[p.dataIndex][1].t)+' \u20ac'},series:[{type:'pie',radius:['42%','72%'],center:['50%','55%'],padAngle:2,itemStyle:{borderRadius:6},label:{color:THEME.textColor,fontSize:10,fontFamily:'Space Grotesk',formatter:'{b|{b}}\n{per|{d}%}',rich:{b:{fontSize:10,color:'#cbd5e1',lineHeight:16},per:{fontSize:11,fontWeight:700,color:'#e2e8f0'}}},data:entries.map((e,i)=>({name:e[0],value:e[1].c,itemStyle:{color:colors[i%colors.length]}})),animationType:'scale',animationDuration:1000}]});
   window.addEventListener('resize',()=>c.resize());
 }
 
-// ========== CATEGORIES CHART ==========
 function renderCatChart(){
-  const c = echarts.init(document.getElementById('chartCategories'),null,{renderer:'svg'});
-  const entries = Object.entries(DATA.categories).sort((a,b)=>b[1].t-a[1].t);
-  const names = entries.map(e=>e[1].n);
-  const totals = entries.map(e=>e[1].t);
-  const counts = entries.map(e=>e[1].c);
-  const opt = {...baseOpt(),
-    grid:{left:'3%',right:'3%',bottom:'3%',top:'3%',containLabel:true},
-    xAxis:{type:'value',splitLine:THEME.splitLine,axisLabel:{color:THEME.textColor,formatter:v=>fmtK(v)+' \u20ac'}},
-    yAxis:{type:'category',data:names.reverse(),axisLine:{show:false},axisTick:{show:false},axisLabel:{color:THEME.textColor,fontSize:11,width:180,overflow:'truncate'}},
-    tooltip:{...baseOpt().tooltip,formatter:p=>'<b>'+p.name+'</b><br/>Montant: '+fmtK(totals[entries.length-1-p.dataIndex])+' \u20ac<br/>March\u00e9s: '+fmt(counts[entries.length-1-p.dataIndex])},
-    series:[{type:'bar',data:totals.reverse().map((v,i)=>{const r=(i/(totals.length-1));return {value:v,itemStyle:{color:'rgba(0,255,136,'+(0.25+r*0.75).toFixed(2)+')',borderRadius:[0,4,4,0]}};}),barWidth:'65%',animationDuration:1400,animationEasing:'cubicOut'}]
-  };
-  c.setOption(opt);
+  const c=echarts.init(document.getElementById('chartCategories'),null,{renderer:'svg'});
+  const entries=Object.entries(DATA.categories).sort((a,b)=>a[1].t-b[1].t);
+  const names=entries.map(e=>e[1].n),totals=entries.map(e=>e[1].t),counts=entries.map(e=>e[1].c);
+  c.setOption({...baseOpt(),grid:{left:'3%',right:'3%',bottom:'3%',top:'3%',containLabel:true},xAxis:{type:'value',splitLine:THEME.splitLine,axisLabel:{color:THEME.textColor,formatter:v=>fmtK(v)+' \u20ac'}},yAxis:{type:'category',data:names,axisLine:{show:false},axisTick:{show:false},axisLabel:{color:THEME.textColor,fontSize:11,width:180,overflow:'truncate'}},tooltip:{...baseOpt().tooltip,formatter:function(p){return'<b>'+p.name+'</b><br/>Montant: '+fmtK(totals[p.dataIndex])+' \u20ac<br/>March\u00e9s: '+fmt(counts[p.dataIndex]);}},series:[{type:'bar',data:totals.map((v,i)=>{const r=i/(totals.length-1);return{value:v,itemStyle:{color:'rgba(0,255,136,'+(0.25+r*0.75).toFixed(2)+')',borderRadius:[0,4,4,0]}};}),barWidth:'65%',animationDuration:1400}]});
   window.addEventListener('resize',()=>c.resize());
 }
 
-// ========== TABLE ==========
-function renderTable(){
-  const tbody = document.getElementById('tableBody');
-  let html = '';
-  DATA.top50.forEach((r,i)=>{
-    html += '<tr class="table-row" style="border-bottom:1px solid var(--border);cursor:default;">'
-      +'<td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+(i+1)+'</td>'
-      +'<td class="px-4 py-3">'+scoreBadge(r.s)+'</td>'
-      +'<td class="px-4 py-3 text-right font-mono text-sm font-semibold" style="color:var(--text-primary)">'+fmt(r.m)+' \u20ac</td>'
-      +'<td class="px-4 py-3 text-sm" style="color:var(--text-primary);max-width:320px;"><span class="line-clamp-2">'+r.o+'</span></td>'
-      +'<td class="px-4 py-3 text-xs" style="color:var(--text-muted)">'+r.t+'<br/><span class="font-mono" style="color:var(--neon-pink);font-size:0.65rem;">'+r.p+'</span></td>'
-      +'<td class="px-4 py-3 text-right font-mono text-xs" style="color:var(--neon-green)">'+fmtK(r.eb)+' \u2013 '+fmtK(r.eh)+' \u20ac</td>'
-      +'</tr>';
-  });
-  tbody.innerHTML = html;
+function renderSupplierChart(){
+  const c=echarts.init(document.getElementById('chartSuppliers'),null,{renderer:'svg'});
+  const d=DATA.suppliers.slice().sort((a,b)=>a.t-b.t);
+  c.setOption({...baseOpt(),grid:{left:'3%',right:'12%',bottom:'3%',top:'3%',containLabel:true},xAxis:{type:'value',splitLine:THEME.splitLine,axisLabel:{color:THEME.textColor,formatter:v=>fmtK(v)+' \u20ac'}},yAxis:{type:'category',data:d.map(s=>s.n),axisLine:{show:false},axisTick:{show:false},axisLabel:{color:THEME.textColor,fontSize:11,width:180,overflow:'truncate'}},tooltip:{...baseOpt().tooltip,formatter:function(p){const s=d[p.dataIndex];return'<b>'+s.n+'</b><br/>Montant: '+fmtK(s.t)+' \u20ac<br/>March\u00e9s: '+s.c+(s.sc>0?'<br/><span style="color:#ef4444">Sans concurrence: '+s.sc+'</span>':'');}},series:[{type:'bar',data:d.map(s=>({value:s.t,itemStyle:{color:s.sc>0?'#ef4444':'#3b82f6',borderRadius:[0,4,4,0]}})),barWidth:'60%',label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:10,color:'#94a3b8',formatter:function(p){const s=d[p.dataIndex];return s.sc>0?fmtK(s.t)+' ('+s.sc+' sans conc.)':fmtK(s.t)+' ('+s.c+' march\u00e9s)';}},animationDuration:1200}]});
+  window.addEventListener('resize',()=>c.resize());
 }
 
-// ========== GSAP ANIMATIONS ==========
+function renderTable(){
+  const tbody=document.getElementById('tableBody');let html='';
+  DATA.top50.forEach((r,i)=>{html+='<tr class="table-row" style="border-bottom:1px solid var(--border);cursor:default;"><td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+(i+1)+'</td><td class="px-4 py-3">'+scoreBadge(r.s)+'</td><td class="px-4 py-3 text-right font-mono text-sm font-semibold" style="color:var(--text-primary)">'+fmt(r.m)+' \u20ac</td><td class="px-4 py-3 text-sm" style="color:var(--text-primary);max-width:320px"><span class="line-clamp-2">'+r.o+'</span></td><td class="px-4 py-3 text-xs" style="color:var(--text-muted)">'+r.t+'<br/><span class="font-mono" style="color:var(--neon-pink);font-size:0.65rem">'+r.p+'</span></td><td class="px-4 py-3 text-right font-mono text-xs" style="color:var(--neon-green)">'+fmtK(r.eb)+' \u2013 '+fmtK(r.eh)+' \u20ac</td></tr>';});
+  tbody.innerHTML=html;
+}
+
+function renderUgapTable(){
+  const tbody=document.getElementById('ugapTableBody');let html='';
+  DATA.ugap.forEach(r=>{
+    const ecart=((r.ugap-r.market)/r.market*100).toFixed(0),en=parseInt(ecart);
+    let verdict,cls;
+    if(en>40){verdict='SUSPECT';cls='background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.3)';}
+    else if(en>20){verdict='ATTENTION';cls='background:rgba(245,158,11,0.15);color:#fcd34d;border:1px solid rgba(245,158,11,0.3)';}
+    else if(en>10){verdict='L\u00e9ger surco\u00fbt';cls='background:rgba(59,130,246,0.15);color:#93c5fd;border:1px solid rgba(59,130,246,0.3)';}
+    else{verdict='OK';cls='background:rgba(0,255,136,0.1);color:#00ff88;border:1px solid rgba(0,255,136,0.2)';}
+    html+='<tr style="border-bottom:1px solid var(--border)"><td class="px-3 py-2 text-sm" style="color:var(--text-primary)">'+r.prod+'</td><td class="px-3 py-2 text-right font-mono text-sm" style="color:var(--text-muted)">'+fmt(r.ugap)+' \u20ac</td><td class="px-3 py-2 text-right font-mono text-sm" style="color:var(--neon-green)">'+fmt(r.market)+' \u20ac <span style="font-size:0.6rem;color:var(--text-muted)">('+r.src+')</span></td><td class="px-3 py-2 text-right font-mono text-sm font-bold" style="color:'+(en>20?'var(--neon-red)':'var(--neon-amber)')+'">+'+ecart+'%</td><td class="px-3 py-2"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.7rem;font-weight:600;'+cls+'">'+verdict+'</span></td></tr>';
+  });
+  tbody.innerHTML=html;
+}
+
+function renderLyonSupplierChart(){
+  const c=echarts.init(document.getElementById('chartLyonSuppliers'),null,{renderer:'svg'});
+  const d=DATA.lyon.suppliers.slice().sort((a,b)=>a.t-b.t);
+  c.setOption({...baseOpt(),grid:{left:'3%',right:'12%',bottom:'3%',top:'3%',containLabel:true},xAxis:{type:'value',splitLine:THEME.splitLine,axisLabel:{color:THEME.textColor,formatter:v=>fmtK(v)+' \u20ac'}},yAxis:{type:'category',data:d.map(s=>s.n),axisLine:{show:false},axisTick:{show:false},axisLabel:{color:THEME.textColor,fontSize:10,width:160,overflow:'truncate'}},tooltip:{...baseOpt().tooltip,formatter:function(p){const s=d[p.dataIndex];return'<b>'+s.n+'</b><br/>'+fmtK(s.t)+' \u20ac<br/>'+s.c+' march\u00e9(s)';}},series:[{type:'bar',data:d.map(s=>({value:s.t,itemStyle:{color:'#ff3b8b',borderRadius:[0,4,4,0]}})),barWidth:'60%',label:{show:true,position:'right',fontFamily:'JetBrains Mono',fontSize:9,color:'#94a3b8',formatter:p=>fmtK(d[p.dataIndex].t)},animationDuration:1200}]});
+  window.addEventListener('resize',()=>c.resize());
+}
+
+function renderLyonCatChart(){
+  const c=echarts.init(document.getElementById('chartLyonCategories'),null,{renderer:'svg'});
+  const d=DATA.lyon.categories.slice().sort((a,b)=>a.t-b.t);
+  c.setOption({...baseOpt(),grid:{left:'3%',right:'8%',bottom:'3%',top:'3%',containLabel:true},xAxis:{type:'value',splitLine:THEME.splitLine,axisLabel:{color:THEME.textColor,formatter:v=>fmtK(v)+' \u20ac'}},yAxis:{type:'category',data:d.map(s=>s.n),axisLine:{show:false},axisTick:{show:false},axisLabel:{color:THEME.textColor,fontSize:10,width:160,overflow:'truncate'}},tooltip:{...baseOpt().tooltip,formatter:function(p){const s=d[p.dataIndex];return'<b>'+s.n+'</b><br/>'+fmtK(s.t)+' \u20ac<br/>'+s.c+' march\u00e9s'+(s.sc>0?'<br/><span style="color:#ef4444">'+s.sc+' sans concurrence</span>':'');}},series:[{type:'bar',data:d.map((s,i)=>{const r=i/(d.length-1);return{value:s.t,itemStyle:{color:s.sc>0?'rgba(255,59,139,'+(0.4+r*0.6).toFixed(2)+')':'rgba(139,92,246,'+(0.3+r*0.7).toFixed(2)+')',borderRadius:[0,4,4,0]}};}),barWidth:'65%',animationDuration:1400}]});
+  window.addEventListener('resize',()=>c.resize());
+}
+
+function renderLyonProcChart(){
+  const c=echarts.init(document.getElementById('chartLyonProc'),null,{renderer:'svg'});
+  const entries=Object.entries(DATA.lyon.procedures).sort((a,b)=>b[1].t-a[1].t);
+  const colors=['#3b82f6','#ff3b8b','#ef4444','#8b5cf6','#f59e0b','#06b6d4'];
+  c.setOption({...baseOpt(),series:[{type:'pie',radius:['42%','72%'],center:['50%','55%'],padAngle:2,itemStyle:{borderRadius:6},label:{color:THEME.textColor,fontSize:10,fontFamily:'Space Grotesk',formatter:'{b|{b}}\n{per|{d}%}',rich:{b:{fontSize:10,color:'#cbd5e1',lineHeight:16},per:{fontSize:11,fontWeight:700,color:'#e2e8f0'}}},data:entries.map((e,i)=>({name:e[0],value:e[1].c,itemStyle:{color:colors[i%colors.length]}})),animationType:'scale',animationDuration:1000}]});
+  window.addEventListener('resize',()=>c.resize());
+}
+
+function renderLyonScTable(){
+  const tbody=document.getElementById('lyonScTableBody');let html='';
+  DATA.lyon.examples_sc.forEach((r,i)=>{html+='<tr class="table-row" style="border-bottom:1px solid var(--border)"><td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+(i+1)+'</td><td class="px-4 py-3 text-right font-mono text-sm font-semibold" style="color:var(--neon-red)">'+fmt(r.m)+' \u20ac</td><td class="px-4 py-3 text-sm" style="color:var(--text-primary);max-width:300px"><span class="line-clamp-2">'+r.o+'</span></td><td class="px-4 py-3 text-xs" style="color:var(--text-muted)">'+r.t+'</td><td class="px-4 py-3 font-mono text-xs" style="color:var(--text-muted)">'+r.d+'</td></tr>';});
+  tbody.innerHTML=html;
+}
+
+function setupSidebar(){
+  const links=document.querySelectorAll('.sidebar-link'),sections=[];
+  links.forEach(l=>{const id=l.getAttribute('data-section');if(id)sections.push({id,el:document.getElementById(id),link:l});});
+  function update(){const sy=window.scrollY+200;let cur=sections[0];sections.forEach(s=>{if(s.el&&s.el.offsetTop<=sy)cur=s;});links.forEach(l=>l.classList.remove('active'));if(cur)cur.link.classList.add('active');}
+  window.addEventListener('scroll',update,{passive:true});
+  links.forEach(l=>{l.addEventListener('click',function(e){e.preventDefault();const el=document.getElementById(this.getAttribute('href').slice(1));if(el)el.scrollIntoView({behavior:'smooth'});document.querySelector('.sidebar').classList.remove('open');});});
+}
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.from('#heroContent',{opacity:0,y:60,duration:1.2,ease:'power3.out',delay:0.3});
-gsap.utils.toArray('.section-enter').forEach(el=>{
-  gsap.to(el,{opacity:1,y:0,duration:0.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
-});
-
-// Progress bar
+gsap.utils.toArray('.section-enter').forEach(el=>{gsap.to(el,{opacity:1,y:0,duration:0.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});});
 gsap.to('#progressBar',{scaleX:1,ease:'none',scrollTrigger:{trigger:'body',start:'top top',end:'bottom bottom',scrub:0.3}});
 document.getElementById('progressBar').style.transform='scaleX(0)';
 
-// ========== INIT ==========
-document.addEventListener('DOMContentLoaded',()=>{
-  renderScoreChart();
-  renderProcChart();
-  renderCatChart();
-  renderTable();
-});
-// Fallback if DOMContentLoaded already fired
-if(document.readyState!=='loading'){renderScoreChart();renderProcChart();renderCatChart();renderTable();}
+function initAll(){renderScoreChart();renderProcChart();renderCatChart();renderSupplierChart();renderTable();renderUgapTable();renderLyonSupplierChart();renderLyonCatChart();renderLyonProcChart();renderLyonScTable();setupSidebar();}
+document.addEventListener('DOMContentLoaded',initAll);
+if(document.readyState!=='loading')initAll();
 </script>
 </body>
 </html>

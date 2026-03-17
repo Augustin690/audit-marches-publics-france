@@ -1,0 +1,270 @@
+{
+  "stats": {
+    "total": 618,
+    "total_amount": 486286468.84,
+    "sans_concurrence": 84,
+    "sans_conc_amount": 17256636.0
+  },
+  "suppliers": [
+    {
+      "n": "BYBLOS HUMAN SECURITY GRAND-EST (BHS GRAND-EST)",
+      "c": 3,
+      "t": 31273412,
+      "sc": 0
+    },
+    {
+      "n": "SOLUTEC (AUBAY - SOLUTEC)",
+      "c": 1,
+      "t": 20000000,
+      "sc": 0
+    },
+    {
+      "n": "LES METIERS DU BOIS",
+      "c": 8,
+      "t": 13348194,
+      "sc": 0
+    },
+    {
+      "n": "SPIE ICS",
+      "c": 1,
+      "t": 12000000,
+      "sc": 0
+    },
+    {
+      "n": "WILLIS TOWERS WATSON FRANCE",
+      "c": 4,
+      "t": 11520000,
+      "sc": 0
+    },
+    {
+      "n": "SOCIETE EXPLOITATION SAMNET",
+      "c": 1,
+      "t": 9000000,
+      "sc": 0
+    },
+    {
+      "n": "CREB CONST RENOV ENTR BATIMENT (CREB)",
+      "c": 3,
+      "t": 8755337,
+      "sc": 0
+    },
+    {
+      "n": "SPIE FACILITIES",
+      "c": 5,
+      "t": 8480000,
+      "sc": 0
+    },
+    {
+      "n": "NXO FRANCE",
+      "c": 1,
+      "t": 8000000,
+      "sc": 0
+    },
+    {
+      "n": "GREEN STYLE",
+      "c": 1,
+      "t": 8000000,
+      "sc": 0
+    },
+    {
+      "n": "ZEUS SECURITE SOCIETE PRIVEE (ZEUS SECURITE PRIVEE)",
+      "c": 1,
+      "t": 8000000,
+      "sc": 0
+    },
+    {
+      "n": "AGRIZ",
+      "c": 1,
+      "t": 8000000,
+      "sc": 0
+    },
+    {
+      "n": "RAZEL-BEC",
+      "c": 1,
+      "t": 7600000,
+      "sc": 0
+    },
+    {
+      "n": "F P E L (FPEL)",
+      "c": 2,
+      "t": 7277444,
+      "sc": 0
+    },
+    {
+      "n": "ATTIQUE ENTREPRISE GENERALE DE BATIMENT",
+      "c": 2,
+      "t": 7200000,
+      "sc": 0
+    }
+  ],
+  "categories": {
+    "45": {
+      "name": "Travaux de construction",
+      "count": 198,
+      "total": 179657332,
+      "sc": 6
+    },
+    "79": {
+      "name": "Services aux entreprises",
+      "count": 62,
+      "total": 63429360,
+      "sc": 9
+    },
+    "71": {
+      "name": "Services d'architecture/ingénierie",
+      "count": 81,
+      "total": 37262638,
+      "sc": 2
+    },
+    "44": {
+      "name": "Matériaux de construction",
+      "count": 37,
+      "total": 36385823,
+      "sc": 5
+    },
+    "72": {
+      "name": "Services informatiques",
+      "count": 20,
+      "total": 36050100,
+      "sc": 3
+    },
+    "15": {
+      "name": "Produits alimentaires",
+      "count": 8,
+      "total": 20864607,
+      "sc": 0
+    },
+    "50": {
+      "name": "Services de réparation/entretien",
+      "count": 19,
+      "total": 14909037,
+      "sc": 0
+    },
+    "66": {
+      "name": "Services financiers/assurances",
+      "count": 12,
+      "total": 13898828,
+      "sc": 1
+    },
+    "31": {
+      "name": "Machines/appareils électriques",
+      "count": 18,
+      "total": 13876649,
+      "sc": 2
+    },
+    "32": {
+      "name": "Équipements de radio/télé/communication",
+      "count": 5,
+      "total": 8714118,
+      "sc": 0
+    }
+  },
+  "procedures": {
+    "Procédure adaptée": {
+      "count": 278,
+      "total": 101254008
+    },
+    "Appel d'offres ouvert": {
+      "count": 240,
+      "total": 315892115
+    },
+    "Marché négocié sans publicité ni mise en concurrence préalable": {
+      "count": 83,
+      "total": 17194840
+    },
+    "Procédure négociée avec mise en concurrence préalable": {
+      "count": 8,
+      "total": 33997879
+    },
+    "Procédure avec négociation": {
+      "count": 8,
+      "total": 17885831
+    },
+    "Marché passé sans publicité ni mise en concurrence préalable": {
+      "count": 1,
+      "total": 61796
+    }
+  },
+  "examples_sc": [
+    {
+      "objet": "Location des bâtiments modulaire déjà en place sur les sites POMPIDOU, KENNEDY, GINGKO, PASTEUR-GOUGES, LABORDE, SAUVAGERE, CORBAS, Club HOUSE lyon 8, Couvent de la visitation",
+      "montant": 3408429.92,
+      "date": "2023-07-11",
+      "cpv": "44211100-3",
+      "siret": "89229832400013",
+      "titulaire": "COUGNAUD"
+    },
+    {
+      "objet": "Maintenance de l'application Chronogestor et Chronotime, conversion de la version Chronogestor vers Chronotime, acquisition de licences, de modules, d'équipements complémentaires et de prestations associées",
+      "montant": 1600000.0,
+      "date": "2023-11-22",
+      "cpv": "72267000-4",
+      "siret": "34054699300668",
+      "titulaire": "NEXPUBLICA FRANCE (NEXPUBLICA)"
+    },
+    {
+      "objet": "Assurance multirisques du patrimoine",
+      "montant": 1223248.15,
+      "date": "2023-12-14",
+      "cpv": "66510000-8",
+      "siret": "72205746001971",
+      "titulaire": "AXA FRANCE IARD"
+    },
+    {
+      "objet": "Déploiement de modems 4G sur le parc des horodateurs FLOWBIRD",
+      "montant": 1106388.85,
+      "date": "2023-07-28",
+      "cpv": "31712310-6",
+      "siret": "44471927200346",
+      "titulaire": "FLOWBIRD"
+    },
+    {
+      "objet": "Services de places, abonnements et autres prestations lors des rencontres de l'Olympique Lyonnais - lot 1 : places et abonnements grands publics (équipe pro masculine)",
+      "montant": 948000.0,
+      "date": "2023-06-12",
+      "cpv": "79980000-7",
+      "siret": "38507188100093",
+      "titulaire": "OLYMPIQUE LYONNAIS"
+    },
+    {
+      "objet": "Fourniture de droits de stationnement pour les véhicules de la Ville de Lyon dans les parcs exploités par la Société publique lyonnaise de mobilités (SPLM)",
+      "montant": 800000.0,
+      "date": "2023-12-21",
+      "cpv": "63712400-7",
+      "siret": "92050885000012",
+      "titulaire": "SOCIETE PUBLIQUE LYONNAISE DE MOBILITES (SPLM)"
+    },
+    {
+      "objet": "Fourniture de droits de stationnement pour les véhicules de la Ville de Lyon dans les parcs exploités par la SEM LYON PARC AUTO",
+      "montant": 800000.0,
+      "date": "2023-04-14",
+      "cpv": "63712400-7",
+      "siret": "96950545200017",
+      "titulaire": "SOC LYON PARC AUTO POUR REALISAT GESTION"
+    },
+    {
+      "objet": "Actions de sensibilisation aux sciences et techniques pour les élèves des écoles primaires publiques",
+      "montant": 720000.0,
+      "date": "2023-10-02",
+      "cpv": "80100000-5",
+      "siret": "41985144900019",
+      "titulaire": "EBULLISCIENCE"
+    },
+    {
+      "objet": "Services de places, abonnements et autres prestations lors des rencontres de l'Olympique Lyonnais - lot 2 : abonnements en tribune et autres prestations",
+      "montant": 667000.0,
+      "date": "2023-06-09",
+      "cpv": "79980000-7",
+      "siret": "87380345600094",
+      "titulaire": "SPORTFIVE EMEA"
+    },
+    {
+      "objet": "Sécurisation et gardiennage du site CIRC - Juin 2023 - mars 2024",
+      "montant": 367980.77,
+      "date": "2023-05-31",
+      "cpv": "79710000-4",
+      "siret": "78821382500987",
+      "titulaire": "SERIS SECURITY (SERIS SECURITY)"
+    }
+  ]
+}
