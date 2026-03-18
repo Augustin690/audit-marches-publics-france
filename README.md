@@ -35,7 +35,7 @@ Sur un échantillon de **10 000 marchés publics** (8,4 Mds EUR) :
 │   ├── sirene_enrich.py        # Enrichissement Sirene + scoring
 │   ├── export_csv.py           # Export CSV
 │   └── prepare_dashboard_data.py
-├── data/                       # Données CSV produites
+├── data/                       # Données CSV et JSON produites
 │   ├── decp_marches_10000.csv
 │   ├── decp_fournitures_cots.csv
 │   ├── boamp_attributions.csv
@@ -45,7 +45,9 @@ Sur un échantillon de **10 000 marchés publics** (8,4 Mds EUR) :
 │   ├── anomalies_completes.csv
 │   ├── marches_scores.csv
 │   ├── top50_opportunites.csv
-│   └── fournisseurs_enrichis.csv
+│   ├── fournisseurs_enrichis.csv
+│   ├── lyon_markets.json       # 618 marchés zone Lyon (DECP)
+│   └── lyon_dashboard_data.json # Données analysées pour le focus Lyon
 ├── dashboard.html              # Tableau de bord interactif
 └── RAPPORT.md                  # Rapport complet d'analyse
 ```
@@ -59,12 +61,22 @@ Sur un échantillon de **10 000 marchés publics** (8,4 Mds EUR) :
 
 ## Dashboard
 
-Le fichier `dashboard.html` contient un tableau de bord interactif avec :
-- 6 indicateurs clés
-- Distribution des scores de suspicion
-- Répartition par type de procédure
-- Top 15 catégories par montant
-- Tableau interactif des 50 meilleures opportunités
+Le fichier `dashboard.html` contient un tableau de bord interactif avec navigation latérale (11 sections) :
+
+1. **Accueil** — Chiffres clés et introduction
+2. **Contexte** — Explication de la démarche, limites et prochaines étapes
+3. **Chiffres clés** — 6 indicateurs en cartes animées
+4. **Graphiques** — Distribution des scores, catégories par montant, procédures
+5. **Fournisseurs** — Top 10 fournisseurs (montant cumulé, marchés sans concurrence)
+6. **Top 50** — Tableau interactif des 50 meilleures opportunités avec liens DECP
+7. **Données brutes** — Extraits de données DECP et BOAMP
+8. **Prix UGAP** — Comparaison UGAP vs prix grand public (détection de surcoûts)
+9. **Méthodologie** — Système de scoring détaillé
+10. **Focus : Lyon** — Étude de cas sur 618 marchés lyonnais (fournisseurs, catégories, marchés sans concurrence)
+
+Chaque contrat dans les tableaux dispose d'un lien **DECP** vers la fiche officielle sur data.economie.gouv.fr.
+
+Stack technique : ECharts 5 (SVG), TailwindCSS, GSAP ScrollTrigger, Google Fonts (Space Grotesk + JetBrains Mono).
 
 ## Licence
 

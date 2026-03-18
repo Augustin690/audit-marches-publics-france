@@ -264,13 +264,19 @@ Chaque marche recoit un score de "facilite de sous-enchere" base sur :
 
 ### Tableau de bord interactif
 
-Un dashboard HTML interactif a ete genere (`dashboard.html`) avec :
-- 6 indicateurs cles en cartes
-- Graphique de distribution des scores de suspicion
+Un dashboard HTML interactif a ete genere (`dashboard.html`) avec navigation laterale et 11 sections :
+- Chiffres cles en cartes animees (6 indicateurs)
+- Distribution des scores de suspicion (bar chart)
 - Repartition par type de procedure (pie chart)
-- Top 15 categories par montant (bar chart horizontal)
-- Tableau interactif des 50 meilleures opportunites
+- Top 15 categories par montant (bar chart horizontal, trie par montant decroissant)
+- Top 10 fournisseurs avec marquage des marches sans concurrence
+- Tableau interactif des 50 meilleures opportunites avec liens DECP officiels
+- Extraits de donnees brutes DECP et BOAMP
+- Comparaison prix UGAP vs prix grand public (detection de surcouts)
 - Section methodologie complete
+- **Focus Lyon** : etude de cas sur 618 marches lyonnais
+
+Chaque contrat reference dans les tableaux dispose d'un badge cliquable "DECP" renvoyant vers la fiche officielle sur data.economie.gouv.fr (API v2.1).
 
 ### Synthese finale
 
@@ -298,3 +304,79 @@ Sur un echantillon de **10 000 marches publics francais** (8,4 Mds EUR) :
 | marches_scores.csv | 10 000 marches avec scoring |
 | top50_opportunites.csv | Top 50 opportunites |
 | fournisseurs_enrichis.csv | 70 profils fournisseurs |
+| lyon_markets.json | 618 marches zone Lyon (DECP brut) |
+| lyon_dashboard_data.json | Donnees analysees pour le focus Lyon |
+
+---
+
+## Etape 6 - Focus collectivite : Lyon
+
+### Objectif
+
+Pour rendre la demarche concrete et accessible aux citoyens, nous avons isole les marches publics executes a Lyon ou passes par des acheteurs lyonnais. Ce zoom local permet de montrer comment l'approche nationale s'applique a l'echelle d'une ville.
+
+### Collecte des donnees lyonnaises
+
+- **Source** : API DECP (data.economie.gouv.fr)
+- **Filtres** : `lieuexecution_nom like "%Lyon%"` (500 resultats) + `acheteur_nom like "%lyon%"` (131 resultats)
+- **Deduplication** : 618 marches uniques
+- **Enrichissement fournisseurs** : API Annuaire des Entreprises (recherche-entreprises.api.gouv.fr)
+- **Fichiers** : `lyon_markets.json` (donnees brutes), `lyon_dashboard_data.json` (donnees analysees)
+
+### Resultats cles
+
+| Indicateur | Valeur |
+|---|---|
+| **Marches analyses** | 618 |
+| **Montant total** | 486 M EUR |
+| **Sans concurrence** | 84 (13,6%) = 17,3 M EUR |
+| **Acheteur principal** | ESID Lyon (Defense) : 64 marches, 54 M EUR |
+
+### Repartition par categorie (top 5)
+
+| Categorie | Nb marches | Montant | Sans concurrence |
+|---|---|---|---|
+| Travaux de construction | 198 | 180 M EUR | 6 |
+| Services aux entreprises | 62 | 63 M EUR | 9 |
+| Architecture/ingenierie | 81 | 37 M EUR | 2 |
+| Materiaux de construction | 37 | 36 M EUR | 5 |
+| Services informatiques | 20 | 36 M EUR | 3 |
+
+### Top 10 fournisseurs (par montant cumule)
+
+| Fournisseur | Marches | Montant |
+|---|---|---|
+| BYBLOS HUMAN SECURITY | 3 | 31,3 M EUR |
+| SOLUTEC (AUBAY) | 1 | 20,0 M EUR |
+| LES METIERS DU BOIS | 8 | 13,3 M EUR |
+| SPIE ICS | 1 | 12,0 M EUR |
+| WILLIS TOWERS WATSON | 4 | 11,5 M EUR |
+| SAMNET | 1 | 9,0 M EUR |
+| CREB Batiment | 3 | 8,8 M EUR |
+| SPIE FACILITIES | 5 | 8,5 M EUR |
+| NXO FRANCE | 1 | 8,0 M EUR |
+| GREEN STYLE | 1 | 8,0 M EUR |
+
+### Marches sans concurrence notables
+
+| Montant | Titulaire | Objet | Ref DECP |
+|---|---|---|---|
+| 3 408 430 EUR | COUGNAUD | Location batiments modulaires (sites Pompidou, Kennedy, etc.) | 2023O499900 |
+| 1 600 000 EUR | NEXPUBLICA | Maintenance Chronogestor/Chronotime + licences | 2023O4973A00 |
+| 1 223 248 EUR | AXA FRANCE IARD | Assurance multirisques du patrimoine | 2023O526200 |
+| 1 106 389 EUR | FLOWBIRD | Deploiement modems 4G horodateurs | 2023O479800 |
+| 948 000 EUR | OLYMPIQUE LYONNAIS | Places et abonnements (lot 1, equipe pro masculine) | 2023O4713A00 |
+| 800 000 EUR | SPLM | Droits stationnement parcs SPLM | 2023O5179A00 |
+| 800 000 EUR | LYON PARC AUTO | Droits stationnement parcs Lyon Parc Auto | 2023O4631A00 |
+| 720 000 EUR | EBULLISCIENCE | Sensibilisation sciences ecoles primaires | 2023O5046A00 |
+| 667 000 EUR | SPORTFIVE EMEA | Places et abonnements OL (lot 2) | 2023O4714A00 |
+| 368 000 EUR | SERIS SECURITY | Securisation et gardiennage site CIRC | 2023O496400 |
+
+Chaque reference DECP est verifiable via : `https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/decp-v3-marches-valides/records?where=id%3D%22{REF}%22&limit=1`
+
+### Constats
+
+1. **Stationnement** : deux marches de 800 000 EUR chacun attribues sans concurrence a la SPLM et Lyon Parc Auto, delegataires historiques. La question de la remise en concurrence periodique se pose.
+2. **Olympique Lyonnais** : 1,6 M EUR cumules (deux lots) pour des places et abonnements, negocies sans concurrence. Le caractere exclusif de la prestation peut justifier l'absence de concurrence, mais le montant merite un examen.
+3. **Construction dominante** : 37% des montants (180 M EUR), coherent pour une metropole en developpement.
+4. **Services aux entreprises** : 63 M EUR, dont 9 marches sans concurrence — secteur ou la mise en concurrence est generalement plus facile a organiser.
