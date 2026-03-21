@@ -67,7 +67,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg-deep);color:var(
 
 <!-- HERO -->
 <section class="hero-gradient mesh-bg min-h-screen flex flex-col justify-center items-center relative px-4" id="hero">
-  <div class="text-center max-w-5xl section-enter" id="heroContent">
+  <div class="text-center max-w-5xl" id="heroContent">
     <p class="font-mono text-sm tracking-[0.3em] uppercase mb-6" style="color:var(--neon-green)">Audit algorithmique &mdash; Mars 2026</p>
     <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8 tracking-tight">
       <span style="color:var(--text-primary)">604 millions d&rsquo;euros</span><br>
@@ -597,7 +597,8 @@ function setupSidebar(){
 }
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.from('#heroContent',{opacity:0,y:60,duration:1.2,ease:'power3.out',delay:0.3});
+gsap.set('#heroContent',{opacity:0,y:60});
+gsap.to('#heroContent',{opacity:1,y:0,duration:1.2,ease:'power3.out',delay:0.3});
 gsap.utils.toArray('.section-enter').forEach(el=>{gsap.to(el,{opacity:1,y:0,duration:0.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});});
 gsap.to('#progressBar',{scaleX:1,ease:'none',scrollTrigger:{trigger:'body',start:'top top',end:'bottom bottom',scrub:0.3}});
 document.getElementById('progressBar').style.transform='scaleX(0)';
